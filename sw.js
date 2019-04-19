@@ -20,7 +20,6 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
     event.respondWith(networkOrCache(event.request)
-    .catch(() => useFallback()));
 });
 
 function networkOrCache(request) {
@@ -29,17 +28,10 @@ function networkOrCache(request) {
         .catch(() => fromCache(request));
 }
 
-const FALLBACK = '<div>оффлайн</div>\n'
-
-function useFallback() {
-    return Promise.resolve(new Response(FALLBACK, { headers: {
-        'Content-Type': 'text/html; charset=utf-8'
-    }}));
-}
 
 function fromCache(request) {
     return caches.open(CACHE).then((cache) =>
         cache.match(request).then((matching) =>
-            matching || Promise.reject('no-match')
-        ));
+        matching || Promise.reject('no-match')
+    ));
 }
