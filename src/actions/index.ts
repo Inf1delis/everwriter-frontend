@@ -19,11 +19,9 @@ export function updateRecord(updatedRecord: Record): EditorActionTypes {
     }
 }
 
-export function deleteRecord(id: string): EditorActionTypes {
+export function deleteRecord(deletedRecord: Record): EditorActionTypes {
     return {
         type: DELETE_RECORD,
-        payload: {
-            id: id
-        }
+        payload: {record: deletedRecord}
     }
 }

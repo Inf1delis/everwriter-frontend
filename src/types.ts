@@ -45,7 +45,7 @@ interface UpdateRecordAction {
 interface DeleteRecordAction {
     type: typeof DELETE_RECORD
     payload: {
-        id:string
+        record: Record
     }
 }
 

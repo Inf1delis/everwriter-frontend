@@ -9,6 +9,7 @@ const DataStorage = {
     create: (record: Record) => {
         record.sync = false;
         record.deleted = false;
+        record.id = DataStorage.data.length+1 + '';
         DataStorage.data.push(record);
         LocalStorage.write(record, DataStorage.data.length-1);
         console.log(DataStorage.data);
@@ -44,7 +45,14 @@ const DataStorage = {
 
     delete: (record: Record): void => {
         record.deleted = true;
-        DataStorage.update(record);
+        let index: number = DataStorage.data.findIndex((el) => {
+            return el.id == record.id
+        });
+        record.sync = false;
+        if (index !== -1) {
+            DataStorage.data[index] = record;
+            LocalStorage.write(record, index);
+        }
     }
 };
 
