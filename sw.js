@@ -2,6 +2,7 @@ const CACHE = 'serverWorker';
 const timeout = 400;
 var urlsToCache = [
   '/',
+  '/idnex.html',
   '/styles/main.css',
 ];
 self.addEventListener('install', (event) => {
