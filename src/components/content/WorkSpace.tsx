@@ -13,13 +13,6 @@ const data: any = DataStorage.list({
 }, () => true);
 
 
-for (let i = 0; i < 100; i++) {
-    data.push({
-        title: ('title' + i),
-        text: ("text" + i)
-    })
-}
-
 function WorkSpace() {
     return (
         <div className="workspace">
