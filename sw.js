@@ -23,14 +23,14 @@ self.addEventListener('fetch', (event) => {
     .catch(() => useFallback()));
 });
 
-const FALLBACK =
-    '<div>\n' +
-    '    <div>App Title</div>\n' +
-    '    <div>you are offline</div>\n' +
-    '    <img src="/svg/or/base64/of/your/dinosaur" alt="dinosaur"/>\n' +
-    '</div>';
+function networkOrCache(request) {
+    return fetch(request)
+        .then((response) => response.ok ? response : fromCache(request))
+        .catch(() => fromCache(request));
+}
 
-// Он никогда не упадет, т.к мы всегда отдаем заранее подготовленные данные.
+const FALLBACK = '<div>оффлайн</div>\n'
+
 function useFallback() {
     return Promise.resolve(new Response(FALLBACK, { headers: {
         'Content-Type': 'text/html; charset=utf-8'
