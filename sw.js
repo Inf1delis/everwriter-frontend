@@ -19,7 +19,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-    event.respondWith(networkOrCache(event.request)
+    event.respondWith(networkOrCache(event.request))
 });
 
 function networkOrCache(request) {
@@ -27,7 +27,6 @@ function networkOrCache(request) {
         .then((response) => response.ok ? response : fromCache(request))
         .catch(() => fromCache(request));
 }
-
 
 function fromCache(request) {
     return caches.open(CACHE).then((cache) =>
