@@ -1,9 +1,15 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import App from "./components/App";
+import { Provider } from 'react-redux'
+import {createStore} from "redux";
+import {render} from "react-dom";
+import editorApp from "./reducers"
 
-function Test(props:any) {
-   return (<div>Hello, world!</div>)
-}
+const store = createStore(editorApp)
 
-ReactDOM.render(<Test compiler="TypeScript" framework="React" />,
-                  document.getElementById('main'));
+render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+    document.getElementById('main')
+)
