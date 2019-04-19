@@ -1,9 +1,9 @@
 import {ADD_RECORD, DELETE_RECORD, EditorActionTypes, EditorState, UPDATE_RECORD} from "../types";
-import {combineReducers} from "redux";
-
+import {combineReducers, createStore} from "redux";
+import DataStorage from "../DataStorage";
 
 const initialState: EditorState = {
-    records: []
+    records: DataStorage.list({current: -1, length: 0}, ()=> true)
 };
 
 function editorReducer(
@@ -12,8 +12,9 @@ function editorReducer(
 ): EditorState {
     switch (action.type) {
         case ADD_RECORD:
+            DataStorage.create(action.payload.record);
             return {
-                records: [...state.records, action.payload.record]
+                records: DataStorage.list({current: -1, length: 0}, ()=> true)
             };
         case UPDATE_RECORD:
             return {
@@ -30,8 +31,4 @@ function editorReducer(
     }
 }
 
-const editorApp = combineReducers({
-    editorReducer,
-})
-
-export default editorApp;
+export default editorReducer;

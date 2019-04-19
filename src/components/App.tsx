@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Header from "./header/Header";
-import WorkSpace from "./content/WorkSpace";
 import './App.less';
+import RecordsList from "./content/RecordsList";
 
 class App extends React.Component {
 
@@ -9,7 +9,7 @@ class App extends React.Component {
         return (
             <div className='app_wrapper' >
                 <Header/>
-                <WorkSpace/>
+                <RecordsList/>
             </div>);
     }
 }
