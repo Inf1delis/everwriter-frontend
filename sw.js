@@ -9,7 +9,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
     caches.open(CACHE)
     .then((cache) => cache.addAll(urlsToCache))
-    .then(() => self.skipWaiting())
+    .then(() => self.skipWaiting()))
 
 });
 
