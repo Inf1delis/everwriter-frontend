@@ -10,6 +10,6 @@ const global = (function() {
 })();
 
 app.use(express.static(resourcesPath));
-const port = process.env.PORT || 777;
+const port = process.env.PORT || 7777;
 var expressServer = app.listen(port);
 
