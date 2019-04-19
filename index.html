@@ -3,16 +3,23 @@
   <head>
     <title>Tensor Hack</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/dist/index.css" />
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
   </head>
 <body>
-  <div id="main" class="site"></div>
-  <!-- Dependencies -->
-  <script src="/node_modules/react/umd/react.development.js"></script>
-  <script src="/node_modules/react-dom/umd/react-dom.development.js"></script>
-
-  <!-- Main -->
-  <script src="/dist/index.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js').then(function(registration) {
+              console.log('ServerWorker suceful: ', registration.scope);
+              }).catch(function(err) {
+              console.log('ServerWorker error: ', err);
+          });
+      });
+    }
+  </script>
+  <div id="main" class="site">
+    sads
+  </div>
 
 </body>
 </html>
