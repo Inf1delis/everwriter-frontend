@@ -27,4 +27,3 @@ export function deleteRecord(id: string): EditorActionTypes {
         }
     }
 }
-
