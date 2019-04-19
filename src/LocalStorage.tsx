@@ -1,8 +1,6 @@
 import {Record} from "./types";
 
 
-
-
 const LocalStorage = {
 
     write: (record: Record, length: number): void => {

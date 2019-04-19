@@ -3541,20 +3541,34 @@ var DataStorage = {
         record.sync = false;
         DataStorage.data.push(record);
         LocalStorage_1.default.write(record, DataStorage.data.length - 1);
+        console.log(DataStorage.data);
     },
     list: function (paging, filter) {
-        var filtered = DataStorage.data.filter(filter);
+        var filtered = DataStorage.data.filter(function (el) {
+            if (el.deleted)
+                return false;
+            return filter(el);
+        });
         if (paging.current == -1)
             return filtered;
         return filtered.slice((paging.current - 1) * paging.length - 1, paging.length);
+    },
+    update: function (record) {
+        var noDeleted = DataStorage.list({
+            current: -1,
+            length: 0
+        }, function () { return true; });
+        var index = noDeleted.findIndex(function (el) {
+            return el.id == record.id;
+        });
+        record.sync = false;
+        DataStorage.data[index] = record;
+        LocalStorage_1.default.write(record, index);
+    },
+    delete: function (record) {
+        record.deleted = true;
+        DataStorage.update(record);
     }
-    /*update() {
-
-    }
-
-    delete() {
-
-    }*/
 };
 exports.default = DataStorage;
 
@@ -3784,7 +3798,8 @@ var AddButton = /** @class */ (function (_super) {
             sync: false,
             text: "adadadasd",
             timestamp: 0,
-            title: "hui"
+            title: "hui",
+            deleted: false
         });
         alert('Added');
     };

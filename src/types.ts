@@ -14,7 +14,8 @@ export interface Record {
         color: string
     },
     status: Status,
-    sync: boolean
+    sync: boolean,
+    deleted: boolean
 }
 
 

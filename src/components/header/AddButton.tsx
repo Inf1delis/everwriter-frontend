@@ -18,8 +18,8 @@ class AddButton extends React.Component {
             sync: false,
             text: "adadadasd",
             timestamp: 0,
-            title: "hui"
-
+            title: "hui",
+            deleted: false
         });
         alert('Added');
     }
