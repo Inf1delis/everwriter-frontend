@@ -1,7 +1,7 @@
 const CACHE = 'serverWorker';
 const timeout = 400;
 var urlsToCache = [
-  '/src/*',
+  '/dist/index.js',
   '/index.html',
   '/styles/main.css',
 ];
