@@ -15,6 +15,8 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@types/node": "^11.13.5",
+    "@types/react-custom-scrollbars": "^4.0.5",
     "express": "^4.16.4",
     "immutable": "^4.0.0-rc.12",
     "mdbreact": "^4.12.0",
@@ -28,7 +30,7 @@
     "ws": "6.2.0"
   },
   "devDependencies": {
-    "@types/react": "16.8.13",
+    "@types/react": "^16.8.13",
     "@types/react-dom": "16.8.4",
     "@types/react-redux": "^7.0.7",
     "@types/react-router-dom": "4.3.2",

@@ -5,7 +5,7 @@ import {createStore} from "redux";
 import {render} from "react-dom";
 import editorApp from "./reducers"
 
-const store = createStore(editorApp)
+const store = createStore(editorApp);
 
 render(
     <Provider store={store}>

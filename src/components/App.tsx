@@ -1,9 +1,17 @@
-import * as React from 'react'
+import * as React from 'react';
+import Header from "./header/Header";
+import WorkSpace from "./content/WorkSpace";
+import './App.less';
 
-const App = () => (
-    <div>
-        console.log("1");
-    </div>
-)
+class App extends React.Component {
 
-export default App
+    render() {
+        return (
+            <div className='app_wrapper' >
+                <Header/>
+                <WorkSpace/>
+            </div>);
+    }
+}
+
+export default App;
