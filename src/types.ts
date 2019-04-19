@@ -13,7 +13,8 @@ export interface Record {
     style: {
         color: string
     },
-    status: Status
+    status: Status,
+    sync: boolean
 }
 
 

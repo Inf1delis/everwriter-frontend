@@ -1,0 +1,21 @@
+.app_wrapper {
+  display: grid;
+
+  grid-template-areas:
+  'header'
+  'workspace';
+
+  grid-template-rows: 50px 94vh;
+  grid-template-columns: auto;
+  grid-gap: 5px;
+}
+
+.header {
+  grid-area: header;
+  background-color: rebeccapurple;
+}
+
+.workspace {
+  grid-area: workspace;
+  background-color: aquamarine;
+}
