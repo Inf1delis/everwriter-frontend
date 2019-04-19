@@ -8,6 +8,7 @@ const DataStorage = {
 
     create: (record: Record) => {
         record.sync = false;
+        record.deleted = false;
         DataStorage.data.push(record);
         LocalStorage.write(record, DataStorage.data.length-1);
         console.log(DataStorage.data);

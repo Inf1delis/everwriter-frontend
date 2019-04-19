@@ -13,7 +13,15 @@ class AddButton extends React.Component {
     }
 
     handleClick (event:any) {
-        store.dispatch(addRecord({title:"OK", id:"12", ordinal:1, status:"CREATED", style:{color:"12"}, text:"OK", timestamp:1}))
+        store.dispatch(addRecord({
+            title:"OK",
+            id:"12",
+            ordinal:1,
+            status:"CREATED",
+            style:{color:"12"},
+            text:"OK",
+            timestamp:1
+        }))
     }
 
     render() {
