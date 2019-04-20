@@ -24,7 +24,7 @@ const port = process.env.PORT || 777;
 var expressServer = app.listen(port);
 
 const WebSocket = require('ws');
-const wss = new WebSocket.Server({ port: 8080 });
+const wss = new WebSocket.Server({server:expressServer});
 
 wss.on('connection', function connection(ws, req) {
 
