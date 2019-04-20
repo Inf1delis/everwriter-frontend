@@ -8,6 +8,7 @@ var urlsToCache = [
   '/node_modules/react/umd/react.development.js',
   'node_modules/react-dom/umd/react-dom.development.js',
   'sw.js',
+  'manifest.json'
 ];
 self.addEventListener('install', (event) => {
     event.waitUntil(

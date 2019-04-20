@@ -1,0 +1,9 @@
+{
+"name": "Notes",
+"short_name": " ",
+"lang": "ru-RU",
+"start_url": "/",
+"display": "standalone", 
+"theme_color": "#E6E6FA", 
+"background_color": "#E6E6FA"
+}
