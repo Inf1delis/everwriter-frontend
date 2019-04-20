@@ -17,16 +17,14 @@ const MyWebSocket:any = {
 
     connect: () => {
         //connect to serve
-        MyWebSocket.inst = new WebSocket("ws://localhost:8080");
+        MyWebSocket.inst = new WebSocket(location.origin.replace(/^http/, 'ws'));
         
         //@ts-ignore
         window.mySocket =  MyWebSocket ;
 
         MyWebSocket.inst.onopen = () => {
             MyWebSocket.connected = true ;
-<<<<<<< HEAD
 
-=======
             if(MyWebSocket.queue.length>0)
             {
                 MyWebSocket.queue.forEach((element:any) => {
@@ -34,7 +32,7 @@ const MyWebSocket:any = {
                 });
                 MyWebSocket.queue=[];                               
             }
->>>>>>> a7cb922245d4d66879de040fd2947977b4faab09
+
         }
 
         MyWebSocket.inst.onclose = () =>{

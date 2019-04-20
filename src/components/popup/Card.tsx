@@ -37,6 +37,12 @@ class Card extends React.Component<{record:Record, handleClick:(event: any)=>voi
                 onChange={this.handleChange}
                 defaultValue={this.state.currentRecord.title}
             >
+            {/*<input>*/}
+            {/*    <button onClick={this.props.handleClick}>*/}
+            {/*        CLOSE THIS SHIT*/}
+            {/*    </button>*/}
+            {/*</input>*/}
+
             </input>
                 <button onClick={this.handleSaveOrUpdate}>
                     SAVE
