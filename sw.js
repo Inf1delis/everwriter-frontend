@@ -1,6 +1,6 @@
 const CACHE = 'serverWorker';
 const timeout = 400;
-var urlsToCache = [
+let urlsToCache = [
   '/',
   '/dist/index.css',
   '/dist/index.css.map',
@@ -17,7 +17,7 @@ self.addEventListener('install', (event) => {
       caches.open(CACHE)
       .then((cache) => cache.addAll(urlsToCache))
       .then(() => self.skipWaiting())
-    )
+    );
 });
 
 self.addEventListener('activate', (event) => {
@@ -26,7 +26,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-    event.respondWith(networkOrCache(event.request))
+    event.respondWith(networkOrCache(event.request));
 });
 
 function networkOrCache(request) {
@@ -38,9 +38,9 @@ function networkOrCache(request) {
 function updateCache(response, request){
     return caches.open(CACHE).then(function(cache) {
         return cache.put(request, response.clone()).then(function() {
-          return response
-        })
-      })
+          return response;
+        });
+      });
 }
 
 function fromCache(request) {

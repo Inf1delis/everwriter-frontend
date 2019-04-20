@@ -2,7 +2,8 @@ import * as React from "react";
 import {Record } from './../../types';
 import store from "../../ReduxStore";
 import {addRecord, updateRecord} from "../../actions";
-import {any, string} from "prop-types";
+
+import TextareaAutosize from 'react-autosize-textarea';
 
 
 class Card extends React.Component<{record:Record, handleClick:(event: any)=>void}, {currentRecord:Record, isNew:string}> {
@@ -37,15 +38,13 @@ class Card extends React.Component<{record:Record, handleClick:(event: any)=>voi
         this.props.handleClick(event);
     }
 
+
     render() {
         return (
             <div className='text-center border border-light p-5 card-popup' >
 
-                <button onClick={this.props.handleClick}>
-                    CLOSE
-                </button>
-                <p className="h4 mb-4"> Edit </p>
 
+                <p className="h4 mb-4"> Edit </p>
 
 
                 <input
@@ -55,16 +54,23 @@ class Card extends React.Component<{record:Record, handleClick:(event: any)=>voi
                     placeholder="Title"
                 >
                 </input>
-                <input
-                    className="form-control mb-4"
+                <div className="text_area_parent">
+                <TextareaAutosize
+                    className="form-control mb-4 text__textarea"
                     onChange={this.handleTextChange}
                     defaultValue={this.state.currentRecord.text}
                     placeholder='Text'
                 >
-                </input>
-                <button className="btn btn-info btn-block btn-primary btn-lg" onClick={this.handleSaveOrUpdate}>
-                    SAVE
-                </button>
+                </TextareaAutosize>
+                </div>
+                <div className="card__button-container">
+                    <button className="btn btn-info btn-block btn-primary btn-lg" onClick={this.handleSaveOrUpdate}>
+                        SAVE
+                    </button>
+                    <button className="btn btn-info btn-block btn-primary btn-lg" onClick={this.props.handleClick}>
+                        CLOSE
+                    </button>
+                </div>
             </div>
         );
     }

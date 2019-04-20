@@ -6,7 +6,7 @@ module.exports = class GetAfterDate {
         let doc = await repository.getDocsAfterDate(date);
         ws.send(JSON.stringify({
             code: 200,
-            message: 'OK',
+            response: 'getAfterDate',
             data: doc
         }));
     }};

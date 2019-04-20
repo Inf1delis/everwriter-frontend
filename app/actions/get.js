@@ -5,7 +5,7 @@ module.exports = class Get {
         let doc = await repository.getDocs();
             ws.send(JSON.stringify({
                 code: 200,
-                message: 'OK',
+                response: "get",
                 data: doc
             }));
     }
