@@ -8,13 +8,16 @@ let messageSchema = new Schema({
             type: Date,
             default: Date.now
         },
-        ordinal: Number,
         title: String,
         text: String,
         style: {
             color: String
         },
-        status: Number
+        likes: Number,
+        deleted: {
+            type: Boolean,
+            default: false
+        }
     },
     { versionKey: false });
 

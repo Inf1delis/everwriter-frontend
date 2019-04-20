@@ -15,7 +15,8 @@ export interface Record {
     },
     status: string,
     sync?: boolean,
-    deleted?: boolean
+    deleted?: boolean,
+    likes: number
 }
 
 

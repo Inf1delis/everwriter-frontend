@@ -9,7 +9,9 @@ Offline text redactor with synchronization and bitches
 `npm run postinstall` - build project after installing  
 `npm run build` - build of webpack project  
 `npm run build:log` - build with logs  
-`npm start` - start application
+`npm start` - start application  
+`npm run dev` - launch nodemon  
+`npm run lint` - launch eslint  
 
 ## Deploy
 
