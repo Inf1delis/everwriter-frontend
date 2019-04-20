@@ -7,8 +7,10 @@ var urlsToCache = [
   '/dist/index.js',
   '/dist/index.js.map',
   '/index.html',
-  '/sw.js',
-  '/manifest.json'
+  'sw.js',
+  '/node_modules/react/umd/react.development.js',
+  '/node_modules/react-dom/umd/react-dom.development.js',
+  'manifest.json'
 ];
 self.addEventListener('install', (event) => {
     event.waitUntil(
