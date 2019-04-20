@@ -3,13 +3,15 @@ import * as ReactDOM from "react-dom";
 import AddButton from "./AddButton";
 import StatusBar from "./StatusBar";
 import "./Header.less";
+import {Record} from "../../types";
 
-function Header() {
-    return (
+const Header = (props: { status:boolean}) => {
+
+        return (
         <div className='header'>
             <div className='header_buttons'>
                 <AddButton/>
-                <StatusBar/>
+                <StatusBar online = {props.status}/>
             </div>
         </div>);
 }

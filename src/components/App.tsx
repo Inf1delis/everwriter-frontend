@@ -6,21 +6,28 @@ import {Record, IEmpty, PopUpState} from '../types'
 import PopUp from "./popup/PopUp";
 import Card from "./popup/Card";
 import store from "../ReduxStore";
+import {MyWebSocket} from "../WebSocket";
 
 
 class App extends React.Component<IEmpty, PopUpState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            pulledRecord: null,
-            stateStatus: false
+            pulledRecord: {},
+            stateStatus: false,
+            connectionStatus: false,
         } as PopUpState
+        MyWebSocket.statusChCallBack = this.handleStatusChange.bind(this);
+    }
+
+    handleStatusChange(status:boolean){
+        this.setState({connectionStatus: status});
     }
 
     render() {
         return (
             <div className='app_wrapper'>
-                <Header/>
+                <Header status = {this.state.connectionStatus}/>
                 <RecordsList itemClk={(rec: Record) => {
                     this.setState({
                         pulledRecord: rec,
