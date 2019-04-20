@@ -5,6 +5,7 @@ import {addRecord} from "../../actions";
 import PopUp from "../popup/PopUp";
 import {Record} from "../../types"
 import DataStorage from "../../DataStorage";
+import AddPopUp from "../popup/AddPopUp";
 
 interface IProps {}
 
@@ -27,7 +28,7 @@ class AddButton extends React.Component<IProps, IState> {
                 ordinal: 1,
                 likes: 0,
                 style: {color: "12"},
-                text: "TEXT",
+                text: "",
                 timestamp: "",
                 sync: false,
                 deleted: false
@@ -52,12 +53,13 @@ class AddButton extends React.Component<IProps, IState> {
                     +
                 </button>
 
-                {this.state.show && <PopUp
+                {this.state.show && <AddPopUp
                     record={Object.assign({}, this.state.tmp)}
                     closeHdl={() => this.setState({
                         show: this.checkShow(),
                         tmp: this.state.tmp
-                    })}/>}
+                    })}
+                    currentNameAction='ADD'/>}
 
 
             </div>

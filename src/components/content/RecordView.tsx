@@ -6,37 +6,35 @@ import {deleteRecord, updateRecord} from "../../actions";
 import {Record} from '../../types'
 import {act} from "react-dom/test-utils";
 
-
 const RecordView = (props: { key: any, text: any, title: any, record: any, itemClk: (rec: Record) => void }) => {
-        const setLike = (like: number, event: any) => {
-            event.stopPropagation();
-            const liked = Object.assign({}, props.record);
-            liked.likes += like;
-            store.dispatch(updateRecord(liked))
+        const rateButton = (value: number) => {
+            return (
+                <button
+                    className="btn-floating btn-sm btn-primary"
+                    onClick={(event: any) => {
+                        event.stopPropagation();
+                        const liked = Object.assign({}, props.record);
+                        liked.likes += value;
+                        store.dispatch(updateRecord(liked))
+                    }}
+                >
+                    -
+                </button>
+            );
         };
+
         return (
             <div className="col-md-4">
                 <div className="card card-cascade mb-4">
                     <div className="card-body card-body-cascade text-center" onClick={() => {
                         props.itemClk(props.record);
                     }}>
-                        <div className="like_counter">
+
+                        {rateButton(-1) /* dislike */}
+                        <span className="like_counter">
                             {props.record.likes}
-                        </div>
-
-                        <button
-                            className="like"
-                            onClick={(event: any) => setLike(1, event)}
-                        >
-                            Like
-                        </button>
-
-                        <button
-                            className="dislike"
-                            onClick={(event: any) => setLike(-1, event)}
-                        >
-                            Dislike
-                        </button>
+                        </span>
+                        {rateButton(1) /* dislike */}
 
                         <div className="card-title">
                             {props.title}

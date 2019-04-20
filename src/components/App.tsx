@@ -3,8 +3,8 @@ import Header from "./header/Header";
 import './App.less';
 import RecordsList from "./content/RecordsList";
 import {Record, IEmpty, PopUpState} from '../types'
-import PopUp from "./popup/PopUp";
-import Card from "./popup/Card";
+import EditPopUp from "./popup/PopUp";
+import EditCard from "./popup/EditCard";
 import store from "../ReduxStore";
 
 
@@ -28,12 +28,13 @@ class App extends React.Component<IEmpty, PopUpState> {
                     })
                 }}/>
 
-                {this.state.stateStatus ? <PopUp
+                {this.state.stateStatus ? <EditPopUp
                     record={this.state.pulledRecord}
-                    closeHdl={()=>this.setState({
-                        pulledRecord: null,
-                        stateStatus: false
-                    })}/> : <div/>}
+                    closeHdl={()=> this.setState({
+                            pulledRecord: null,
+                            stateStatus: false
+                        })}
+                    currentNameAction='EDIT'/> : <div/>}
 
 
             </div>);

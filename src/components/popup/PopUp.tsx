@@ -1,13 +1,14 @@
 import * as React from "react";
 import {Record} from '../../types'
-// import "./PopUp.less"
+// import "./EditPopUp.less"
 import {PopUpState, IEmpty} from "../../types";
 import store from "../../ReduxStore";
-import Card from "./Card";
+import EditCard from "./EditCard";
 
 interface IProps {
     record?: Record;
     closeHdl?: ()=>void;
+    currentNameAction?: string;
 }
 
 class PopUp extends React.Component<IProps, IEmpty> {
@@ -24,11 +25,21 @@ class PopUp extends React.Component<IProps, IEmpty> {
         return (
             <div className='popup'>
                 <div className="popup__background"/>
-                <Card
-                    record={this.props.record}
-                    handleClick={this.handleClick}/>
+                {this.currentCard()}
             </div>);
     }
+
+    currentCard() {
+        return(
+            <EditCard
+                record={this.props.record}
+                handleClick={this.handleClick}
+                currentNameAction={this.props.currentNameAction}
+            />
+        )
+
+    }
+
 }
 
 export default PopUp;
