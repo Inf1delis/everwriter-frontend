@@ -1,5 +1,4 @@
 import PopUp from "./PopUp";
-import EditCard from "./EditCard";
 import * as React from "react";
 import AddCard from "./AddCard";
 

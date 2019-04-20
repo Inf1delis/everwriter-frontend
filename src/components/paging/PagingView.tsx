@@ -1,7 +1,5 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import store from "../../ReduxStore";
-import PopUp from "../header/AddButton";
 import {firstPage, lastPage, nextPage, prevPage} from "../../actions";
 
 

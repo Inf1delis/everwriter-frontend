@@ -1,10 +1,5 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
-import store from "../../ReduxStore";
-import {addRecord} from "../../actions";
-import PopUp from "../popup/PopUp";
 import {Record} from "../../types"
-import DataStorage from "../../DataStorage";
 import AddPopUp from "../popup/AddPopUp";
 
 interface IProps {}

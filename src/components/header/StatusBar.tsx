@@ -1,6 +1,6 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import "./Header.less"
+
 interface IState {
     text?: string,
     online?: Boolean

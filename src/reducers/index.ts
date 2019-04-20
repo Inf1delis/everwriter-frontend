@@ -3,16 +3,14 @@ import {
     DELETE_RECORD,
     EditorActionTypes,
     EditorState,
-    UPDATE_RECORD,
-    RELOAD,
     FIRST_PAGE,
     LAST_PAGE,
     NEXT_PAGE,
     PREV_PAGE,
+    RELOAD,
+    UPDATE_RECORD,
 } from "../types";
-import {combineReducers, createStore} from "redux";
 import DataStorage from "../DataStorage";
-import {act} from "react-dom/test-utils";
 
 const initialState: EditorState = {
     records: DataStorage.list({current: 0, length: 6}, ()=> true),

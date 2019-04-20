@@ -2,7 +2,6 @@ import * as React from "react";
 import {Record} from './../../types';
 import store from "../../ReduxStore";
 import {addRecord, updateRecord} from "../../actions";
-import Scrollbars from 'react-custom-scrollbars';
 import TextareaAutosize from 'react-autosize-textarea';
 
 interface IProps {

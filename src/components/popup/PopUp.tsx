@@ -1,8 +1,6 @@
 import * as React from "react";
-import {Record} from '../../types'
 // import "./EditPopUp.less"
-import {PopUpState, IEmpty} from "../../types";
-import store from "../../ReduxStore";
+import {IEmpty, Record} from '../../types'
 import EditCard from "./EditCard";
 
 interface IProps {

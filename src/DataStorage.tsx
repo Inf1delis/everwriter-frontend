@@ -76,10 +76,8 @@ const DataStorage = {
         if (DataStorage.data[index].deleted) {
             return;
         }
-
         DataStorage.data[index].likes += 1;
-        // LocalStorage.write(DataStorage.data);
-        
+
 
     },
 

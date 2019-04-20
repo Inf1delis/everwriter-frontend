@@ -1,8 +1,14 @@
 import {
-    Record,
     ADD_RECORD,
+    DELETE_RECORD,
     EditorActionTypes,
-    UPDATE_RECORD, DELETE_RECORD, RELOAD, NEXT_PAGE, FIRST_PAGE, LAST_PAGE, PREV_PAGE
+    FIRST_PAGE,
+    LAST_PAGE,
+    NEXT_PAGE,
+    PREV_PAGE,
+    Record,
+    RELOAD,
+    UPDATE_RECORD
 } from "../types";
 
 export function addRecord(newRecord: Record): EditorActionTypes {
