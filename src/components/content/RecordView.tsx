@@ -14,7 +14,7 @@ const RecordView = (props: { key: any, text: any, title: any, record: Record, it
                     onClick={(event: any) => {
                         event.stopPropagation();
 
-                        DataStorage.updateLikes(props.record);
+                        DataStorage.updateLikes(props.record, value);
                         MyWebSocket.send({
                                 "action": "like",
                                 "data": {

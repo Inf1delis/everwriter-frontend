@@ -70,7 +70,7 @@ const DataStorage = {
         }
 
     },
-    updateLikes: (record: Record): void => {
+    updateLikes: (record: Record, value:number): void => {
         let index: number = DataStorage.data.findIndex((el) => {
             return el.id == record.id
         });
@@ -80,7 +80,7 @@ const DataStorage = {
         if (DataStorage.data[index].deleted) {
             return;
         }
-        DataStorage.data[index].likes += 1;
+        DataStorage.data[index].likes += value;
         store.dispatch(reloadAction());
 
     },
