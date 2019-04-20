@@ -7,13 +7,24 @@ import {Record} from '../../types'
 
 const RecordView = ((props:{key:any, text:any, title:any, record: any, itemClk:(rec:Record)=>void}) => {
     return (
-        <div className="record" onClick={() => {
-            props.itemClk(props.record);
-        }}>
-            {props.title}
-            <button onClick={()=>{store.dispatch(deleteRecord(props.record))}}>
-                Delete
-            </button>
+        <div className="col-md-4">
+            <div className="card card-cascade mb-4">
+                <div className="card-body card-body-cascade text-center" onClick={() => {
+                    props.itemClk(props.record);
+                }}>
+                    <div className="card-title">
+                        {props.title}
+                    </div>
+                    <div className="card-text">
+                        {props.text}
+                    </div>
+                </div>
+                <button
+                    className="btn btn-primary btn-lg"
+                    onClick={()=>{store.dispatch(deleteRecord(props.record))}}>
+                    Delete
+                </button>
+            </div>
         </div>);
 });
 
