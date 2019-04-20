@@ -1,6 +1,7 @@
 import { any } from "prop-types";
 function we(){console.log('ss')}
 function wew(){console.log('ss')}
+
 const MyWebSocket:any = {
     msgCallBacks:[],
     addMsgCallBack(a: ()=> void){

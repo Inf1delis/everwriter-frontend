@@ -12,7 +12,7 @@ const DataStorage = {
         let id:number = DataStorage.data.length + 1;
         record.id = id + '';
         DataStorage.data.push(record);
-        LocalStorage.write(record, DataStorage.data.length-1);
+        LocalStorage.write(DataStorage.data);
         console.log(DataStorage.data);
     },
     list: (paging: { current: number, length: number }, filter: (record: Record) => boolean): Record[] => {
@@ -40,7 +40,7 @@ const DataStorage = {
         });
         record.sync = false;
         DataStorage.data[index] = record;
-        LocalStorage.write(record, index);
+        LocalStorage.write(DataStorage.data);
 
     },
 
@@ -52,7 +52,7 @@ const DataStorage = {
         record.sync = false;
         if (index !== -1) {
             DataStorage.data[index] = record;
-            LocalStorage.write(record, index);
+            LocalStorage.write(DataStorage.data);
         }
     }
 };

@@ -30,7 +30,8 @@ class AddButton extends React.Component<IProps, IState> {
                 text: "",
                 timestamp: 1,
                 sync: false,
-                deleted: false
+                deleted: false,
+                likes: 0
             }
         };
     }
