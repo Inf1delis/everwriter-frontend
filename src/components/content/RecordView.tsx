@@ -5,6 +5,7 @@ import store from "../../ReduxStore";
 import {deleteRecord, updateRecord} from "../../actions";
 import {Record} from '../../types'
 import {act} from "react-dom/test-utils";
+import {MyWebSocket} from "../../WebSocket";
 
 const RecordView = (props: { key: any, text: any, title: any, record: any, itemClk: (rec: Record) => void }) => {
         const rateButton = (value: number, text:string) => {
@@ -15,7 +16,15 @@ const RecordView = (props: { key: any, text: any, title: any, record: any, itemC
                         event.stopPropagation();
                         const liked = Object.assign({}, props.record);
                         liked.likes += value;
-                        store.dispatch(updateRecord(liked))
+                        MyWebSocket.send({
+                                "action": "like",
+                                "data": {
+                                    "_id": liked.id,
+                                    "like":  liked.likes
+                                }
+                            }
+                        )
+
                     }}
                 >
                     {text}

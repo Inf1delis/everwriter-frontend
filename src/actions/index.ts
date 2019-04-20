@@ -25,6 +25,7 @@ export function updateRecord(updatedRecord: Record): EditorActionTypes {
     }
 }
 
+
 export function deleteRecord(deletedRecord: Record): EditorActionTypes {
     return {
         type: DELETE_RECORD,

@@ -8,7 +8,7 @@ import {
     FIRST_PAGE,
     LAST_PAGE,
     NEXT_PAGE,
-    PREV_PAGE
+    PREV_PAGE,
 } from "../types";
 import {combineReducers, createStore} from "redux";
 import DataStorage from "../DataStorage";
@@ -39,7 +39,7 @@ function editorReducer(
                 lastPage: newLastPage,
                 length: 3,
                 inDataStore: allRecords.length
-            }
+            };
         case ADD_RECORD:
             DataStorage.create(action.payload.record);
             allRecords = DataStorage.list({current: -1, length: 0}, ()=> true);

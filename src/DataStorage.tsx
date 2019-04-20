@@ -3,6 +3,7 @@ import LocalStorage from './LocalStorage'
 import {updateRecord} from "./actions";
 import {Synchronization} from "./Synchronization";
 import RecordView from "./components/content/RecordView";
+import {MyWebSocket} from "./WebSocket";
 
 
 const DataStorage = {
@@ -35,7 +36,7 @@ const DataStorage = {
 
         return filtered.slice(
             (paging.current) * paging.length,
-            (paging.current) * paging.length+paging.length
+            (paging.current) * paging.length + paging.length
         );
     },
     update: (record: Record, fromServer?: boolean): void => {
@@ -92,8 +93,7 @@ const DataStorage = {
                     maxIndex = index;
                 }
             }
-
-        })
+        });
         if (maxIndex === -1) {
             return '';
         }
