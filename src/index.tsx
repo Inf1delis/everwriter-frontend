@@ -7,6 +7,9 @@ import {MyWebSocket} from './WebSocket';
 
 MyWebSocket.connect();
 
+//@ts-ignore
+window.myWS=MyWebSocket;
+
 render(
     <Provider store={store}>
         <App/>
