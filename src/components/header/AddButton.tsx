@@ -20,7 +20,7 @@ class AddButton extends React.Component<IProps, IState> {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.state = {
-            show: DataStorage.data.length === 0,
+            show: false,
             tmp: {
                 title: "",
                 id: "",
@@ -65,8 +65,6 @@ class AddButton extends React.Component<IProps, IState> {
     }
 
     checkShow() {
-        if (DataStorage.data.length === 0)
-            return true;
         return !this.state.show;
     }
 
