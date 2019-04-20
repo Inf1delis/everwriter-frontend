@@ -56,7 +56,7 @@ const DataStorage = {
         }
 
         DataStorage.data[index] = record;
-        LocalStorage.write(DataStorage.data);
+        LocalStorage.write(DataStorage.data.reverse());
         if(!fromServer){
             Synchronization.toServer();
         }

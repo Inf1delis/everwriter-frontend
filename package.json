@@ -27,6 +27,7 @@
     "nodemon": "^1.18.11",
     "react": "16.8.4",
     "react-autosize-textarea": "^7.0.0",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.8.4",
     "react-modal": "^3.8.1",
     "react-redux": "^7.0.2",

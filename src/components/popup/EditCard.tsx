@@ -2,7 +2,7 @@ import * as React from "react";
 import {Record} from './../../types';
 import store from "../../ReduxStore";
 import {addRecord, updateRecord} from "../../actions";
-
+import Scrollbars from 'react-custom-scrollbars';
 import TextareaAutosize from 'react-autosize-textarea';
 
 interface IProps {
@@ -60,14 +60,14 @@ class EditCard extends React.Component<IProps, IState> {
                 >
                 </input>
                 <div className="text_area_parent">
-                    <TextareaAutosize
-                        className="form-control mb-4 text__textarea"
-                        onChange={this.handleTextChange}
-                        defaultValue={this.state.currentRecord.text}
-                        placeholder='Text'
-                    >
-                    </TextareaAutosize>
-
+                        <TextareaAutosize
+                            className="form-control mb-4 text__textarea"
+                            onChange={this.handleTextChange}
+                            defaultValue={this.state.currentRecord.text}
+                            placeholder='Text'
+                            rows={10}
+                        >
+                        </TextareaAutosize>
                     {this.confirmButtons()}
                 </div>
             </div>

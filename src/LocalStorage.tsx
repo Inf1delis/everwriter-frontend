@@ -8,7 +8,7 @@ const LocalStorage = {
 
     read: (): Record[] => {
         try {
-            return JSON.parse(localStorage["all"])
+            return JSON.parse(localStorage["all"]).reverse()
         } catch (e) {
             localStorage['all'] = '[]';
             return [];
