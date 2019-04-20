@@ -29,6 +29,9 @@ const DataStorage = {
                 return false;
             return filter(el);
         });
+        filtered.sort((a:Record,b:Record)=>{
+           return b.likes-a.likes;
+        });
 
         if (paging.current == -1)
             return filtered;
