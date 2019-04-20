@@ -20,14 +20,14 @@ class AddButton extends React.Component<IProps, IState> {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.state = {
-            show: false,
+            show: DataStorage.data.length === 0,
             tmp: {
-                title: "TITLE",
+                title: "",
                 id: "",
                 ordinal: 1,
                 status: "CREATED",
                 style: {color: "12"},
-                text: "TEXT",
+                text: "",
                 timestamp: 1,
                 sync: false,
                 deleted: false
@@ -55,7 +55,7 @@ class AddButton extends React.Component<IProps, IState> {
                 {this.state.show && <PopUp
                     record={Object.assign({}, this.state.tmp)}
                     closeHdl={() => this.setState({
-                        show: !this.state.show && DataStorage.data.length <= 0,
+                        show: this.checkShow(),
                         tmp: this.state.tmp
                     })}/>}
 
@@ -63,6 +63,13 @@ class AddButton extends React.Component<IProps, IState> {
             </div>
         );
     }
+
+    checkShow() {
+        if (DataStorage.data.length === 0)
+            return true;
+        return !this.state.show;
+    }
+
 }
 
 export default AddButton;

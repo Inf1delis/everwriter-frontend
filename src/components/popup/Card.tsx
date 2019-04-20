@@ -50,14 +50,16 @@ class Card extends React.Component<{record:Record, handleClick:(event: any)=>voi
 
                 <input
                     className="form-control mb-4"
-                    onChange={this.handleTextChange}
-                    defaultValue={this.state.currentRecord.text}
+                    onChange={this.handleTitleChange}
+                    defaultValue={this.state.currentRecord.title}
+                    placeholder="Title"
                 >
                 </input>
                 <input
                     className="form-control mb-4"
-                    onChange={this.handleTitleChange}
-                    placeholder='Title'
+                    onChange={this.handleTextChange}
+                    defaultValue={this.state.currentRecord.text}
+                    placeholder='Text'
                 >
                 </input>
                 <button className="btn btn-info btn-block btn-primary btn-lg" onClick={this.handleSaveOrUpdate}>
