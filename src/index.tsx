@@ -3,6 +3,9 @@ import App from "./components/App";
 import { Provider } from 'react-redux'
 import {render} from "react-dom";
 import store from "./ReduxStore";
+import {MyWebSocket} from './WebSocket';
+
+MyWebSocket.connect();
 
 render(
     <Provider store={store}>
