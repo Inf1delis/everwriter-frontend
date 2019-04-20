@@ -101,9 +101,6 @@ const MyWebSocket:any = {
             MyWebSocket.inst.send(JSON.stringify(data));
         else
             MyWebSocket.queue.push(data)
-    },
-    updateLikes: (data:any) => {
-
     }
 
 
