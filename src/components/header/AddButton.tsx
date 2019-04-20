@@ -27,10 +27,10 @@ class AddButton extends React.Component {
     render() {
         return (
             <button
-                className={styles.add}
+                className="btn-floating btn-lg blue-gradient header__button-add"
                 onClick={this.handleClick}
             >
-                AddButton
+                +
             </button>);
     }
 }
