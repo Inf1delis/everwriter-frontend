@@ -3,7 +3,6 @@ let repository = require('../repository');
 
 module.exports = class Insert {
     async response(ws, req, clients) {
-        if (req.data.id && req.data.title && req.data.text && req.data.style) {
             let doc = await repository.insertDoc(req.data.id, req.data.title, req.data.text, req.data.style);
             for (let i in clients) {
                 if (clients.hasOwnProperty(i)) {
@@ -18,6 +17,5 @@ module.exports = class Insert {
                     }
                 }
             }
-        } else ws.send(JSON.stringify(errors['400']));
     }
 };
