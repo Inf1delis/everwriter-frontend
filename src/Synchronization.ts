@@ -1,7 +1,7 @@
 import DataStorage from "./DataStorage";
 import {Record} from './types';
 import {MyWebSocket} from "./WebSocket";
-import { reloadAction } from "./actions";
+import {reloadAction} from "./actions";
 import store from "./ReduxStore";
 
 const Synchronization:any = {

@@ -1,8 +1,7 @@
-import { any } from "prop-types";
 import DataStorage from "./DataStorage";
-import { Synchronization } from "./Synchronization";
+import {Synchronization} from "./Synchronization";
 import store from "./ReduxStore";
-import { reloadAction } from "./actions";
+import {reloadAction} from "./actions";
 
 const MyWebSocket:any = {
 

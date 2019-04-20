@@ -1,12 +1,9 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import "./Record.less";
 import store from "../../ReduxStore";
-import {deleteRecord, updateRecord} from "../../actions";
+import {deleteRecord} from "../../actions";
 import {Record} from '../../types'
-import {act} from "react-dom/test-utils";
 import {MyWebSocket} from "../../WebSocket";
-import {Synchronization} from "../../Synchronization";
 import DataStorage from "../../DataStorage";
 
 const RecordView = (props: { key: any, text: any, title: any, record: Record, itemClk: (rec: Record) => void }) => {

@@ -2,10 +2,8 @@ import * as React from 'react';
 import Header from "./header/Header";
 import './App.less';
 import RecordsList from "./content/RecordsList";
-import {Record, IEmpty, PopUpState} from '../types'
+import {IEmpty, PopUpState, Record} from '../types'
 import EditPopUp from "./popup/PopUp";
-import EditCard from "./popup/EditCard";
-import store from "../ReduxStore";
 import {MyWebSocket} from "../WebSocket";
 import Paging from "./paging/Paging";
 
