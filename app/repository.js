@@ -14,7 +14,7 @@ exports.insertDoc = (id, title, text, style) => Docs.create(
         deleted: false
     });
 
-exports.getDocs = () => Docs.find({deleted: false}).sort('-timestamp');
+exports.getDocs = () => Docs.find({deleted: false}).sort('+timestamp');
 
 exports.getDocsAfterDate = (date) => Docs.find({timestamp: {$gt: date}}).sort('+timestamp');
 
