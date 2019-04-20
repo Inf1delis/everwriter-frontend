@@ -25,7 +25,7 @@ module.exports = class Router {
     return data;
   }
   
-go(req, ws, msg) {
+go(req, ws, msg, clients) {
     let data = this.parseRequest(msg); // Вдруг прилетел неправильный json
     if( data ) {
       switch( data.action ) {
@@ -36,13 +36,13 @@ go(req, ws, msg) {
         this.GetAfterDate.response(ws, data);
         break;
       case 'delete':
-        this.Delete.response(ws, data);
+        this.Delete.response(ws, data, clients);
         break;
       case 'post':
-         this.Insert.response(ws, data);
+         this.Insert.response(ws, data, clients);
          break;
       case 'update':
-         this.Update.response(ws, data);
+         this.Update.response(ws, data, clients);
          break;
       
       default: // Либо отдаём 404

@@ -26,9 +26,18 @@ let expressServer = app.listen(port);
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({server:expressServer});
 
+const clients = {};
 wss.on('connection', function connection(ws, req) {
 
+    let id = Math.random();
+    clients[id] = { ws: ws };
+
    ws.on('message', function incoming(message) {
-       router.go(req, ws, message);
+       router.go(req, ws, message, clients);
    });
+
+    ws.on('close', () => {
+        delete clients[id];
+    });
+
  });
