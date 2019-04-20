@@ -10,7 +10,7 @@ const LocalStorage = {
         try {
             return JSON.parse(localStorage["all"])
         } catch (e) {
-            localStorage['all'] = '{}';
+            localStorage['all'] = '[]';
             return [];
         }
     }

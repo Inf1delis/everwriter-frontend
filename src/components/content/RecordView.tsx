@@ -28,7 +28,6 @@ const RecordView = (props: { key: any, text: any, title: any, record: any, itemC
                             className="like"
                             onClick={(event: any) => setLike(1, event)}
                         >
-                            {console.log('hui')}
                             Like
                         </button>
 

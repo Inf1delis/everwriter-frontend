@@ -10,7 +10,7 @@ const DataStorage = {
         record.sync = false;
         record.deleted = false;
         let id:number = DataStorage.data.length + 1;
-        record.id = id + '';
+        record.id = id+'';
         DataStorage.data.push(record);
         LocalStorage.write(DataStorage.data);
         console.log(DataStorage.data);
