@@ -49,12 +49,13 @@ const DataStorage = {
         if (!fromServer) {
             record.sync = false;
         }
-        if (DataStorage.data[index].deleted) {
-            return;
-        }
 
         if (index === -1) {
             DataStorage.create(record, fromServer);
+            return;
+        }
+
+        if (DataStorage.data[index].deleted) {
             return;
         }
 
