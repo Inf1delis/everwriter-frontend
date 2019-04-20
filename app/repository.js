@@ -14,9 +14,10 @@ const newOrdinal = async () => {
     return newOrdinal;
 };
 
-exports.insertDoc = async (title, text, style) => Docs.create(
+exports.insertDoc = async (id, title, text, style) => Docs.create(
     {
         _id: new mongoose.Types.ObjectId,
+        id: id,
         ordinal: await newOrdinal(),
         title: title,
         text: text,
@@ -27,6 +28,8 @@ exports.insertDoc = async (title, text, style) => Docs.create(
     });
 
 exports.getDocs = () => Docs.find({});
+
+exports.getDocsAfterDate = (date) => Docs.find({timestamp: {$gt: date}});
 
 exports.updateDoc = (id, title, text, style) => Docs.findOneAndUpdate({_id: id},
     {

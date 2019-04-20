@@ -3,8 +3,8 @@ let repository = require('../repository');
 
 module.exports = class Insert {
     async response (ws, req){
-        if (req.data.title && req.data.text && req.data.style) {
-            let doc = await repository.insertDoc(req.data.title, req.data.text, req.data.style);
+        if (req.data.id && req.data.title && req.data.text && req.data.style) {
+            let doc = await repository.insertDoc(req.data.id, req.data.title, req.data.text, req.data.style);
             ws.send(JSON.stringify({
                 code: 200,
                 message: 'OK',

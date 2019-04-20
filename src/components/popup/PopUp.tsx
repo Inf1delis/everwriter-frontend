@@ -23,6 +23,7 @@ class PopUp extends React.Component<IProps, IEmpty> {
     render() {
         return (
             <div className='popup'>
+                <div className="popup__background"/>
                 <Card
                     record={this.props.record}
                     handleClick={this.handleClick}/>
