@@ -5,6 +5,9 @@ import store from "./ReduxStore";
 import { reloadAction } from "./actions";
 
 const MyWebSocket:any = {
+
+    statusChCallBack:null,
+
     msgCallBacks:[],
     addMsgCallBack(a: ()=> void){
         this.msgCallBacks.push(a)
@@ -15,6 +18,8 @@ const MyWebSocket:any = {
         this.msgCallBacks.splice(index, 1);
     },
 
+    status:false,
+    counters:0,
     inst: undefined,
     queue:[],
 
@@ -27,7 +32,12 @@ const MyWebSocket:any = {
 
         MyWebSocket.inst.onopen = () => {
             MyWebSocket.connected = true ;
-
+            MyWebSocket.status=true;
+            if(MyWebSocket.statusChCallBack)
+            {
+                MyWebSocket.statusChCallBack(true);
+            }
+            MyWebSocket.counters=0;
             if(MyWebSocket.queue.length>0)
             {
                 MyWebSocket.queue.forEach((element:any) => {
@@ -56,7 +66,13 @@ const MyWebSocket:any = {
             MyWebSocket.inst = undefined;
             setTimeout(()=>{
                 MyWebSocket.connect();
+                MyWebSocket.counters++;
             },1000)
+            if(MyWebSocket.counters>3){
+                if(MyWebSocket.status&&MyWebSocket.statusChCallBack)
+                    MyWebSocket.statusChCallBack(false);
+                MyWebSocket.status=false;
+            }
         }
 
         MyWebSocket.inst.onmessage = (event:any)=> {
