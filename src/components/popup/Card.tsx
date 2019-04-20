@@ -19,7 +19,7 @@ class Card extends React.Component<{record:Record, handleClick:(event: any)=>voi
 
         this.state = {
             currentRecord : Object.assign({}, props.record),
-            isNew : props.record.id ? "NO":"YES"
+            isNew : props.record.id ? "YES":"NO"
         }
     }
 
@@ -34,11 +34,13 @@ class Card extends React.Component<{record:Record, handleClick:(event: any)=>voi
 
     handleTextChange(event:any){
         this.state.currentRecord.text = event.target.value;
-        console.log(this.state.currentRecord);
     }
 
     handleSaveOrUpdate(event:any){
-        store.dispatch(updateRecord(this.state.currentRecord));
+        if (this.state.isNew === "YES")
+            store.dispatch(addRecord(this.state.currentRecord));
+        else
+            store.dispatch(updateRecord(this.state.currentRecord));
         this.props.handleClick(event);
     }
 
@@ -46,13 +48,7 @@ class Card extends React.Component<{record:Record, handleClick:(event: any)=>voi
         return (
             <div className='card' >
                 <input
-                    className="exampleForm2"
-                    onChange={this.handleTextChange}
-                    defaultValue={this.state.currentRecord.text}
-                >
-                </input>
-                <input
-                    onChange={this.handleChangeTitle}
+                    onChange={this.handleTitleChange}
                     defaultValue={this.state.currentRecord.title}
                 />
 
@@ -62,7 +58,6 @@ class Card extends React.Component<{record:Record, handleClick:(event: any)=>voi
                 />
 
                 <button onClick={this.handleSaveOrUpdate}>
-
                     SAVE
                 </button>
             </div>
