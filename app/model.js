@@ -13,7 +13,7 @@ let messageSchema = new Schema({
         style: {
             color: String
         },
-        status: Number,
+        likes: Number,
         deleted: {
             type: Boolean,
             default: false

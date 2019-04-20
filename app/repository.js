@@ -10,19 +10,20 @@ exports.insertDoc = (id, title, text, style) => Docs.create(
         style: {
             color: style.color
         },
-        status: 0,
+        likes: 0,
         deleted: false
     });
 
-exports.getDocs = () => Docs.find({});
+exports.getDocs = () => Docs.find({deleted: false});
 
 exports.getDocsAfterDate = (date) => Docs.find({timestamp: {$gt: date}});
 
-exports.updateDoc = (id, title, text, style) => Docs.findOneAndUpdate({_id: id},
+exports.updateDoc = (id, title, text, likes, style) => Docs.findOneAndUpdate({_id: id},
     {
         $set: {
             title: title,
             text: text,
+            likes: likes,
             style: {
                 color: style.color
             }

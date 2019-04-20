@@ -18,7 +18,7 @@ const DataStorage = {
         }
         
         DataStorage.data.push(record);
-        LocalStorage.write(record, DataStorage.data.length-1);
+        LocalStorage.write(DataStorage.data);
         if(!fromServer){
             Synchronization.toServer();
         }
@@ -51,7 +51,7 @@ const DataStorage = {
             record.sync = false;
         }
         DataStorage.data[index] = record;
-        LocalStorage.write(record, index);
+        LocalStorage.write(DataStorage.data);
         if(!fromServer){
             Synchronization.toServer();
         }
@@ -68,7 +68,7 @@ const DataStorage = {
         }
         if (index !== -1) {
             DataStorage.data[index] = record;
-            LocalStorage.write(record, index);
+            LocalStorage.write(DataStorage.data);
             if(!fromServer){
                 Synchronization.toServer();
             }
