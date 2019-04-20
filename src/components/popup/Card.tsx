@@ -12,11 +12,9 @@ class Card extends React.Component<{record:Record, handleClick:(event: any)=>voi
         handleClick:(event: any)=>void
     }) {
         super(props);
-
         this.handleSaveOrUpdate = this.handleSaveOrUpdate.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
-
         this.state = {
             currentRecord : Object.assign({}, props.record),
             isNew : props.record.id ? "YES":"NO"
@@ -26,10 +24,6 @@ class Card extends React.Component<{record:Record, handleClick:(event: any)=>voi
 
     handleTitleChange(event:any){
         this.state.currentRecord.title = event.target.value;
-    }
-
-    handleChangeText(event: any) {
-        this.state.currentRecord.text = event.target.value;
     }
 
     handleTextChange(event:any){
@@ -46,18 +40,21 @@ class Card extends React.Component<{record:Record, handleClick:(event: any)=>voi
 
     render() {
         return (
-            <div className='card' >
+            <div className='text-center border border-light p-5 card-popup' >
+                <p className="h4 mb-4"> Edit </p>
                 <input
+                    className="form-control mb-4"
+                    onChange={this.handleTextChange}
+                    defaultValue={this.state.currentRecord.text}
+                >
+                </input>
+                <input
+                    className="form-control mb-4"
                     onChange={this.handleTitleChange}
                     defaultValue={this.state.currentRecord.title}
-                />
-
-                <input
-                    onChange={this.handleChangeText}
-                    defaultValue={this.state.currentRecord.text}
-                />
-
-                <button onClick={this.handleSaveOrUpdate}>
+                >
+                </input>
+                <button className="btn btn-info btn-block btn-primary btn-lg" onClick={this.handleSaveOrUpdate}>
                     SAVE
                 </button>
             </div>
