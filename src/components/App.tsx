@@ -22,7 +22,6 @@ class App extends React.Component<IEmpty, PopUpState> {
             <div className='app_wrapper'>
                 <Header/>
                 <RecordsList itemClk={(rec: Record) => {
-                    alert("Bitch");
                     this.setState({
                         pulledRecord: rec,
                         stateStatus: true

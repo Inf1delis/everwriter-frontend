@@ -13,7 +13,7 @@ const DataStorage = {
             record.sync = false;
             record.deleted = false;
         }
-        record.id = DataStorage.data.length+1 + '';
+        record.id = Math.random()+'';
         DataStorage.data.push(record);
         LocalStorage.write(record, DataStorage.data.length-1);
         Synchronization.toServer();

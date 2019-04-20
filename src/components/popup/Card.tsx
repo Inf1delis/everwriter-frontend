@@ -8,37 +8,59 @@ import {any, string} from "prop-types";
 class Card extends React.Component<{record:Record, handleClick:(event: any)=>void}, {currentRecord:Record, isNew:string}> {
 
     constructor(props:{
-        record:Record,
-        handleClick:(event: any)=>void
-    }) {
+                        record:Record,
+                        handleClick:(event: any)=>void }) {
         super(props);
         this.handleSaveOrUpdate = this.handleSaveOrUpdate.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleTextChange = this.handleTextChange.bind(this);
+        this.handleTitleChange = this.handleTitleChange.bind(this);
         this.state = {
             currentRecord : Object.assign({}, props.record),
-            isNew : props.record.id ? "NO":"YES"
+            isNew : props.record.id === "" ? "YES":"NO"
         }
     }
 
-    handleChange(event:any){
+
+    handleTitleChange(event:any){
         this.state.currentRecord.title = event.target.value;
-        console.log(this.state.currentRecord);
+    }
+
+    handleTextChange(event:any){
+        this.state.currentRecord.text = event.target.value;
     }
 
     handleSaveOrUpdate(event:any){
-        store.dispatch(updateRecord(this.state.currentRecord));
+        if (this.state.isNew === "YES")
+            store.dispatch(addRecord(this.state.currentRecord));
+        else
+            store.dispatch(updateRecord(this.state.currentRecord));
         this.props.handleClick(event);
     }
 
     render() {
         return (
-            <div className='card' >
-            <input
-                onChange={this.handleChange}
-                defaultValue={this.state.currentRecord.title}
-            >
-            </input>
-                <button onClick={this.handleSaveOrUpdate}>
+            <div className='text-center border border-light p-5 card-popup' >
+
+                <button onClick={this.props.handleClick}>
+                    CLOSE
+                </button>
+                <p className="h4 mb-4"> Edit </p>
+
+
+
+                <input
+                    className="form-control mb-4"
+                    onChange={this.handleTextChange}
+                    defaultValue={this.state.currentRecord.text}
+                >
+                </input>
+                <input
+                    className="form-control mb-4"
+                    onChange={this.handleTitleChange}
+                    placeholder='Title'
+                >
+                </input>
+                <button className="btn btn-info btn-block btn-primary btn-lg" onClick={this.handleSaveOrUpdate}>
                     SAVE
                 </button>
             </div>

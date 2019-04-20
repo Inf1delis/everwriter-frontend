@@ -1,5 +1,6 @@
 import { any } from "prop-types";
 import DataStorage from "./DataStorage";
+import { Synchronization } from "./Synchronization";
 
 const MyWebSocket:any = {
     msgCallBacks:[],
@@ -16,9 +17,9 @@ const MyWebSocket:any = {
     queue:[],
 
     connect: () => {
-        //connect to serve
-        MyWebSocket.inst = new WebSocket("ws://localhost:8080");
-        
+
+        //connect to server
+        MyWebSocket.inst = new WebSocket(location.origin.replace(/^http/, 'ws'));
         //@ts-ignore
         window.mySocket =  MyWebSocket ;
 
@@ -30,7 +31,7 @@ const MyWebSocket:any = {
                 MyWebSocket.queue.forEach((element:any) => {
                     MyWebSocket.send(element);
                 });
-                MyWebSocket.queue=[];                               
+                MyWebSocket.queue=[];
             }
 
             let str = DataStorage.getLastDate();
@@ -58,8 +59,17 @@ const MyWebSocket:any = {
 
         MyWebSocket.inst.onmessage = (event:any)=> {
 
+            let msgData = JSON.parse(event.data);
+            if(msgData.response == 'get' && msgData.response == 'getAfterDate'){
+                Synchronization.fromServer(msgData.data);
+
+            }
+
+            MyWebSocket.msgCallBacks.forEach((element:any) => {
+                element(msgData);
+            });
         }
-        
+
     },
     send: (data:any) => {
         if(MyWebSocket.connected==true)
@@ -67,9 +77,9 @@ const MyWebSocket:any = {
         else
             MyWebSocket.queue.push(data)
     }
-    
-    
-    
+
+
+
 }
 
 export {MyWebSocket};

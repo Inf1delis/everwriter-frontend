@@ -7,7 +7,9 @@ import {MyWebSocket} from './WebSocket';
 import {Synchronization} from './Synchronization';
 
 MyWebSocket.connect();
-window.sync = Synchronization.fromServer()
+
+//@ts-ignore
+window.sync = Synchronization;//.fromServer()
 render(
     <Provider store={store}>
         <App/>
