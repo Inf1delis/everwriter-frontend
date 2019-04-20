@@ -7,7 +7,7 @@ import {Record} from '../../types'
 import {act} from "react-dom/test-utils";
 
 const RecordView = (props: { key: any, text: any, title: any, record: any, itemClk: (rec: Record) => void }) => {
-        const rateButton = (value: number) => {
+        const rateButton = (value: number, text:string) => {
             return (
                 <button
                     className="btn-floating btn-sm btn-primary"
@@ -18,7 +18,7 @@ const RecordView = (props: { key: any, text: any, title: any, record: any, itemC
                         store.dispatch(updateRecord(liked))
                     }}
                 >
-                    -
+                    {text}
                 </button>
             );
         };
@@ -30,11 +30,11 @@ const RecordView = (props: { key: any, text: any, title: any, record: any, itemC
                         props.itemClk(props.record);
                     }}>
 
-                        {rateButton(-1) /* dislike */}
+                        {rateButton(-1, '-') /* dislike */}
                         <span className="like_counter">
                             {props.record.likes}
                         </span>
-                        {rateButton(1) /* dislike */}
+                        {rateButton(1, '+') /* dislike */}
 
                         <div className="card-title">
                             {props.title}
