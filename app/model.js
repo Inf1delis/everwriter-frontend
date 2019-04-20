@@ -3,6 +3,7 @@ let Schema = mongoose.Schema;
 
 let messageSchema = new Schema({
         _id: Schema.ObjectId,
+        id: String,
         timestamp: {
             type: Date,
             default: Date.now
