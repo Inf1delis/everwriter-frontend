@@ -34,8 +34,8 @@ const DataStorage = {
             return filtered;
 
         return filtered.slice(
-            (paging.current - 1) * paging.length - 1,
-            paging.length
+            (paging.current) * paging.length,
+            (paging.current) * paging.length+paging.length
         );
     },
     update: (record: Record, fromServer?: boolean): void => {
