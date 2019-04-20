@@ -25,15 +25,17 @@ const DataStorage = {
             Synchronization.toServer();
         }
     },
-    list: (paging: { current: number, length: number }, filter: (record: Record) => boolean): Record[] => {
+    list: (paging: { current: number, length: number }, filter: (record: Record) => boolean, sortByLikes:boolean): Record[] => {
         let filtered: Record[] = DataStorage.data.filter((el) => {
             if (el.deleted)
                 return false;
             return filter(el);
         });
-        filtered.sort((a:Record,b:Record)=>{
-           return b.likes-a.likes;
-        });
+        if(sortByLikes) {
+            filtered.sort((a: Record, b: Record) => {
+                return b.likes - a.likes;
+            });
+        }
 
         if (paging.current == -1)
             return filtered;

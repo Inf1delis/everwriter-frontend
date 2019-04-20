@@ -7,7 +7,7 @@ import {
     NEXT_PAGE,
     PREV_PAGE,
     Record,
-    RELOAD,
+    RELOAD, SORT_BY_LIKES, SORT_BY_NOVELTY,
     UPDATE_RECORD
 } from "../types";
 
@@ -61,5 +61,19 @@ export function firstPage(): EditorActionTypes {
 export function lastPage(): EditorActionTypes {
     return {
         type: LAST_PAGE
+    }
+}
+
+
+export function sortByLikes(): EditorActionTypes {
+    return {
+        type: SORT_BY_LIKES
+    }
+}
+
+
+export function sortByNovelty(): EditorActionTypes {
+    return {
+        type: SORT_BY_NOVELTY
     }
 }

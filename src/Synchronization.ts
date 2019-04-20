@@ -28,7 +28,7 @@ const Synchronization:any = {
                 DataStorage.delete(el, true);
                 return;
             }
-            let List = DataStorage.list({current:-1, length:0}, (item) => {return item.id===el.id})
+            let List = DataStorage.list({current:-1, length:0}, (item) => {return item.id===el.id}, false)
             if(List.length > 0){
                 DataStorage.update(el, true)
             } else {
