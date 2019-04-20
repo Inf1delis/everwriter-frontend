@@ -44,7 +44,7 @@ const DataStorage = {
             current:-1,
             length:0}, () => true);
 
-        let index: number = noDeleted.findIndex((el) => {
+        let index: number =  DataStorage.data.findIndex((el) => {
             return el.id == record.id
         });
         if (!fromServer) {
