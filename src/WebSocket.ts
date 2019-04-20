@@ -46,6 +46,7 @@ const MyWebSocket:any = {
                 MyWebSocket.queue=[];
             }
 
+            
             let str = DataStorage.getLastDate();
             if(str){
                 MyWebSocket.send({
@@ -59,6 +60,7 @@ const MyWebSocket:any = {
                     action: "get"
                 })
             }
+            Synchronization.toServer();
         }
 
         MyWebSocket.inst.onclose = () =>{
