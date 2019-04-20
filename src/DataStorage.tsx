@@ -50,6 +50,11 @@ const DataStorage = {
         if (!fromServer) {
             record.sync = false;
         }
+        if (index === -1) {
+            DataStorage.create(record, fromServer);
+            return;
+        }
+
         DataStorage.data[index] = record;
         LocalStorage.write(DataStorage.data);
         if(!fromServer){

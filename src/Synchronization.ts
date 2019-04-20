@@ -1,11 +1,18 @@
 import DataStorage from "./DataStorage";
 import {Record} from './types';
 import {MyWebSocket} from "./WebSocket";
+import { reloadAction } from "./actions";
+import store from "./ReduxStore";
 
 const Synchronization:any = {
     messageCallback(msgData:any) {
         if (msgData.response === 'post' || msgData.response === 'update') {
-            DataStorage.update(msgData.data, true)
+            DataStorage.update(msgData.data, true);
+            store.dispatch(reloadAction());
+        }
+        if (msgData.response === 'delete') {
+            DataStorage.delete(msgData.data, true);
+            store.dispatch(reloadAction());
         }
     },
 
