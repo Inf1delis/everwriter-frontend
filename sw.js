@@ -4,7 +4,12 @@ let urlsToCache = [
   '/dist/index.js',
   '/dist/index.css',
   '/bootstrap.css',
-  'manifest.json'
+  '/manifest.json', 
+  '/index.html',
+  '/sw.js',
+  '/',
+  '/node_modules/react/umd/react.development.js',
+  '/node_modules/react-dom/umd/react-dom.development.js'
 
 ];
 self.addEventListener('install', (event) => {
