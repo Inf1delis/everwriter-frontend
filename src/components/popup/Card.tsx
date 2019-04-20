@@ -8,9 +8,8 @@ import {any, string} from "prop-types";
 class Card extends React.Component<{record:Record, handleClick:(event: any)=>void}, {currentRecord:Record, isNew:string}> {
 
     constructor(props:{
-        record:Record,
-        handleClick:(event: any)=>void
-    }) {
+                        record:Record,
+                        handleClick:(event: any)=>void }) {
         super(props);
 
         this.handleSaveOrUpdate = this.handleSaveOrUpdate.bind(this);
@@ -19,7 +18,7 @@ class Card extends React.Component<{record:Record, handleClick:(event: any)=>voi
 
         this.state = {
             currentRecord : Object.assign({}, props.record),
-            isNew : props.record.id ? "YES":"NO"
+            isNew : props.record.id === "" ? "YES":"NO"
         }
     }
 
@@ -47,14 +46,18 @@ class Card extends React.Component<{record:Record, handleClick:(event: any)=>voi
     render() {
         return (
             <div className='card' >
+                <button onClick={this.props.handleClick}>
+                    CLOSE
+                </button>
+
                 <input
                     onChange={this.handleTitleChange}
-                    defaultValue={this.state.currentRecord.title}
+                    placeholder='Title'
                 />
 
                 <input
                     onChange={this.handleChangeText}
-                    defaultValue={this.state.currentRecord.text}
+                    placeholder='Text'
                 />
 
                 <button onClick={this.handleSaveOrUpdate}>

@@ -21,7 +21,10 @@ const RecordView = ((props:{key:any, text:any, title:any, record: any, itemClk:(
                 </div>
                 <button
                     className="btn btn-primary btn-lg"
-                    onClick={()=>{store.dispatch(deleteRecord(props.record))}}>
+                    onClick={(event)=>{
+                        event.stopPropagation();
+                        store.dispatch(deleteRecord(props.record));
+                    }}>
                     Delete
                 </button>
             </div>
