@@ -14,6 +14,7 @@ interface IProps {
 interface IState {
     currentRecord: Record;
     isNew: string;
+    error: string
 }
 
 
@@ -27,6 +28,7 @@ class EditCard extends React.Component<IProps, IState> {
         this.state = {
             currentRecord: Object.assign({}, props.record),
             isNew: props.record.id === "" ? "YES" : "NO",
+            error: ""
         }
     }
 
@@ -40,6 +42,10 @@ class EditCard extends React.Component<IProps, IState> {
     }
 
     handleSaveOrUpdate(event: any) {
+        if(!this.state.currentRecord.title || !this.state.currentRecord.text){
+            this.setState({error: "Fields are required to fill" })
+            return;
+        }
         if (this.state.isNew === "YES")
             store.dispatch(addRecord(this.state.currentRecord));
         else
@@ -68,6 +74,12 @@ class EditCard extends React.Component<IProps, IState> {
                             rows={10}
                         >
                         </TextareaAutosize>
+                        {
+                            this.state.error &&
+                                <div className="alert alert-danger" role="alert">
+                                    {this.state.error}
+                                </div>
+                        }
                     {this.confirmButtons()}
                 </div>
             </div>

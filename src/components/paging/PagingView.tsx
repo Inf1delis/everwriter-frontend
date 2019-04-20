@@ -32,14 +32,14 @@ export class PagingView extends React.Component<{currentPage: number, lastPage: 
 
     render() {
         return (
-            <div>
-                <button className="btn btn-outline-default" onClick={this.handleFirst} disabled={this.props.currentPage==0}>{"<<"}</button>
+            <div className="btn-adaptive-parent">
+                <button className="btn btn-outline-default btn-adaptive" onClick={this.handleFirst} disabled={this.props.currentPage==0}>{"<<"}</button>
                 <button className="btn btn-outline-default" onClick={this.handlePrev} disabled={this.props.currentPage==0}>{"<"}</button>
 
                 <button className="btn btn-outline-default" disabled={true}> {this.props.currentPage}/{this.props.lastPage} </button>
 
                 <button className="btn btn-outline-default" onClick={this.handleNext} disabled={this.props.currentPage==this.props.lastPage}>{">"}</button>
-                <button className="btn btn-outline-default" onClick={this.handleLast} disabled={this.props.currentPage==this.props.lastPage}>{">>"}</button>
+                <button className="btn btn-outline-default btn-adaptive" onClick={this.handleLast} disabled={this.props.currentPage==this.props.lastPage}>{">>"}</button>
             </div>
         );
     }
