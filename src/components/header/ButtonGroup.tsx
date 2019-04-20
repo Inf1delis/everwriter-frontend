@@ -1,5 +1,7 @@
 import * as React from "react";
 import {number} from "prop-types";
+import store from "../../ReduxStore";
+import {sortByLikes, sortByNovelty} from "../../actions";
 
 
 interface IProps {
@@ -24,7 +26,10 @@ class ButtonGroup extends React.Component<IProps, IState> {
                        checked={0 == this.state.status}
                        onChange={() => {this.setState({
                            status: 0
-                       })}}/>
+                       })
+                           store.dispatch(sortByNovelty());
+
+                       }}/>
                 New
             </label>
             <label className={"btn btn-light-blue form-check-label" + (1 == this.state.status ? " active" : '')} >
@@ -32,7 +37,10 @@ class ButtonGroup extends React.Component<IProps, IState> {
                        checked={1 == this.state.status}
                        onChange={() => {this.setState({
                            status: 1
-                       })}}/>
+                       });
+
+                           store.dispatch(sortByLikes());
+                       }}/>
                        Popular
             </label>
         </div>

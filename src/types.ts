@@ -26,6 +26,7 @@ export interface EditorState {
     length: number,
     lastPage: number,
     inDataStore: number,
+    sortByLikes: boolean
 }
 export const RELOAD = 'RELOAD';
 export const ADD_RECORD = 'ADD_RECORD';
@@ -35,6 +36,9 @@ export const FIRST_PAGE = 'FIRST_PAGE';
 export const LAST_PAGE = 'LAST_PAGE';
 export const NEXT_PAGE = 'NEXT_PAGE';
 export const PREV_PAGE = 'PREV_PAGE';
+export const SORT_BY_LIKES = 'SORT_BY_LIKES';
+export const SORT_BY_NOVELTY = 'SORT_BY_NOVELTY';
+
 
 interface ReloadAction {
     type: typeof RELOAD
@@ -77,6 +81,14 @@ interface PrevPageAction {
     type: typeof PREV_PAGE
 }
 
+interface SortByLikesAction {
+    type: typeof SORT_BY_LIKES
+}
+
+interface SortByNoveltyAction {
+    type: typeof SORT_BY_NOVELTY
+}
+
 export interface PopUpState {
     pulledRecord: Record;
     stateStatus: boolean;
@@ -85,4 +97,4 @@ export interface PopUpState {
 
 export interface IEmpty {}
 
-export type EditorActionTypes = AddRecordAction | UpdateRecordAction | DeleteRecordAction | ReloadAction | FirstPageAction | LastPageRecordAction | NextPageAction | PrevPageAction
+export type EditorActionTypes = AddRecordAction | UpdateRecordAction | DeleteRecordAction | ReloadAction | FirstPageAction | LastPageRecordAction | NextPageAction | PrevPageAction | SortByLikesAction | SortByNoveltyAction
