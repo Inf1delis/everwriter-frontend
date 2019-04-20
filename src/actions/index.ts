@@ -2,13 +2,19 @@ import {
     Record,
     ADD_RECORD,
     EditorActionTypes,
-    UPDATE_RECORD, DELETE_RECORD
+    UPDATE_RECORD, DELETE_RECORD, RELOAD
 } from "../types";
 
 export function addRecord(newRecord: Record): EditorActionTypes {
     return {
         type: ADD_RECORD,
         payload: {record: newRecord}
+    }
+}
+
+export function reloadAction(): EditorActionTypes {
+    return {
+        type: RELOAD
     }
 }
 

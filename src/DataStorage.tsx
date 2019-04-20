@@ -13,10 +13,15 @@ const DataStorage = {
             record.sync = false;
             record.deleted = false;
         }
-        record.id = Math.random()+'';
+        if (!record.id) {
+            record.id = Math.round(Math.random() * 1000000) + '';
+        }
+        
         DataStorage.data.push(record);
         LocalStorage.write(record, DataStorage.data.length-1);
-        Synchronization.toServer();
+        if(!fromServer){
+            Synchronization.toServer();
+        }
         console.log(DataStorage.data);
     },
     list: (paging: { current: number, length: number }, filter: (record: Record) => boolean): Record[] => {
@@ -47,7 +52,9 @@ const DataStorage = {
         }
         DataStorage.data[index] = record;
         LocalStorage.write(record, index);
-        Synchronization.toServer();
+        if(!fromServer){
+            Synchronization.toServer();
+        }
 
     },
 
@@ -62,7 +69,9 @@ const DataStorage = {
         if (index !== -1) {
             DataStorage.data[index] = record;
             LocalStorage.write(record, index);
-            Synchronization.toServer();
+            if(!fromServer){
+                Synchronization.toServer();
+            }
         }
     },
 

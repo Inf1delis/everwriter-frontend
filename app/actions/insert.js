@@ -7,7 +7,7 @@ module.exports = class Insert {
             let doc = await repository.insertDoc(req.data.id, req.data.title, req.data.text, req.data.style);
             ws.send(JSON.stringify({
                 code: 200,
-                message: 'OK',
+                response: 'post',
                 data: doc
             }));
         } else ws.send(JSON.stringify(errors['400']));

@@ -1,6 +1,8 @@
 import { any } from "prop-types";
 import DataStorage from "./DataStorage";
 import { Synchronization } from "./Synchronization";
+import store from "./ReduxStore";
+import { reloadAction } from "./actions";
 
 const MyWebSocket:any = {
     msgCallBacks:[],
@@ -60,9 +62,9 @@ const MyWebSocket:any = {
         MyWebSocket.inst.onmessage = (event:any)=> {
 
             let msgData = JSON.parse(event.data);
-            if(msgData.response == 'get' && msgData.response == 'getAfterDate'){
+            if(msgData.response == 'get' || msgData.response == 'getAfterDate'){
                 Synchronization.fromServer(msgData.data);
-
+                store.dispatch(reloadAction());
             }
 
             MyWebSocket.msgCallBacks.forEach((element:any) => {

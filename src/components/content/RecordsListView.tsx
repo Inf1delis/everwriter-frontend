@@ -14,9 +14,9 @@ const RecordsListView = (props: { records: Record[], itemClk: (rec: Record) => v
                     title={item.title}
                     record={item}
                     itemClk={props.itemClk}/>;
-                })
-            }
-        </div>);
+            })}
+        </div>
+    );
 }
 
 export default RecordsListView;

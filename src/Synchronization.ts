@@ -3,6 +3,12 @@ import {Record} from './types';
 import {MyWebSocket} from "./WebSocket";
 
 const Synchronization:any = {
+    messageCallback(msgData:any) {
+        if (msgData.response === 'post' || msgData.response === 'update') {
+            DataStorage.update(msgData.data, true)
+        }
+    },
+
     fromServer(rs: Record[]) {
         rs.forEach((el) => {
             if(el.deleted){
@@ -23,7 +29,7 @@ const Synchronization:any = {
             let List = DataStorage.list({
                 current:-1,
                 length:0}, 
-                (rec) => { return !rec.sync;}
+                (rec) => { return rec.sync === false;}
             );
 
             List.forEach(function (value){
@@ -38,20 +44,19 @@ const Synchronization:any = {
                     } else {
                         MyWebSocket.send({
                             "action": "update",
-                            "data": {
-                                "_id": value._id,
-                                "title": value.title,
-                                "text": value.text
-                            }
+                            "data": value
                         })
                     }
                 } else {
                     MyWebSocket.send({
-                        "action": "create",
+                        "action": "post",
                         "data": {
                             "id": value.id,
                             "title": value.title,
-                            "text": value.text
+                            "text": value.text,
+                            "style": {
+                                "color": "black",
+                            }
                         }
                     })
                 }
@@ -60,4 +65,7 @@ const Synchronization:any = {
         
     }
 }
+
+MyWebSocket.addMsgCallBack(Synchronization.messageCallback);
+
 export {Synchronization};

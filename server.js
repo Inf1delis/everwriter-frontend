@@ -21,7 +21,7 @@ const global = (function() {
 
 app.use(express.static(resourcesPath));
 const port = process.env.PORT || 8765;
-var expressServer = app.listen(port);
+let expressServer = app.listen(port);
 
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({server:expressServer});

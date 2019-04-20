@@ -14,7 +14,7 @@ export interface Record {
     style: {
         color: string
     },
-    status: string,
+    likes: number,
     sync?: boolean,
     deleted?: boolean
 }
@@ -23,11 +23,14 @@ export interface Record {
 export interface EditorState {
     records: Record[]
 }
-
+export const RELOAD = 'RELOAD';
 export const ADD_RECORD = 'ADD_RECORD';
 export const UPDATE_RECORD = 'UPDATE_RECORD';
 export const DELETE_RECORD = 'DELETE_RECORD';
 
+interface ReloadAction {
+    type: typeof RELOAD
+}
 
 interface AddRecordAction {
     type: typeof ADD_RECORD
@@ -57,4 +60,4 @@ export interface PopUpState {
 
 export interface IEmpty {}
 
-export type EditorActionTypes = AddRecordAction | UpdateRecordAction | DeleteRecordAction
+export type EditorActionTypes = AddRecordAction | UpdateRecordAction | DeleteRecordAction | ReloadAction
