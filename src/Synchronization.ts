@@ -26,12 +26,8 @@ const Synchronization:any = {
     toServer() {
 
         if (MyWebSocket.connected){
-            let List = DataStorage.list({
-                current:-1,
-                length:0}, 
-                (rec) => { return rec.sync === false;}
-            );
-
+            let List = DataStorage.data.filter((rec) => { return rec.sync === false;});
+            
             List.forEach(function (value){
                 if(value._id){
                     if(value.deleted){
