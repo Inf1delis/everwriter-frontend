@@ -66,6 +66,21 @@ const DataStorage = {
         }
 
     },
+    updateLikes: (record: Record): void => {
+        let index: number = DataStorage.data.findIndex((el) => {
+            return el.id == record.id
+        });
+        // if (!fromServer) {
+        //     record.sync = false;
+        // }
+        if (DataStorage.data[index].deleted) {
+            return;
+        }
+
+        DataStorage.data[index].likes += 1;
+        LocalStorage.write(DataStorage.data);
+
+    },
 
     delete: (record: Record, fromServer?: boolean): void => {
         record.deleted = true;

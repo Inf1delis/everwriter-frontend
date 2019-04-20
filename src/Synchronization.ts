@@ -10,6 +10,7 @@ const Synchronization:any = {
             DataStorage.update(msgData.data, true);
             store.dispatch(reloadAction());
         }
+
         if (msgData.response === 'delete') {
             DataStorage.delete(msgData.data, true);
             store.dispatch(reloadAction());
