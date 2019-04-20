@@ -16,8 +16,7 @@ export interface Record {
     },
     likes: number,
     sync?: boolean,
-    deleted?: boolean,
-    likes: number
+    deleted?: boolean
 }
 
 
