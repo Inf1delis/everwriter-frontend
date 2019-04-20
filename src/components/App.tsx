@@ -4,6 +4,8 @@ import './App.less';
 import RecordsList from "./content/RecordsList";
 import {Record, IEmpty, PopUpState} from '../types'
 import PopUp from "./content/pop_up/PopUp";
+import Card from "./popup/Card";
+import store from "../ReduxStore";
 
 
 class App extends React.Component<IEmpty, PopUpState> {
@@ -32,6 +34,10 @@ class App extends React.Component<IEmpty, PopUpState> {
                         pulledRecord: null,
                         stateStatus: false
                     })}/> : <div/>}
+
+
+                <RecordsList/>
+                <Card record={store.getState().records[0]}/>
 
             </div>);
     }
