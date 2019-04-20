@@ -49,4 +49,11 @@ interface DeleteRecordAction {
     }
 }
 
+export interface PopUpState {
+    pulledRecord: Record;
+    stateStatus: boolean;
+}
+
+export interface IEmpty {}
+
 export type EditorActionTypes = AddRecordAction | UpdateRecordAction | DeleteRecordAction
