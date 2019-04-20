@@ -1,6 +1,4 @@
 import { any } from "prop-types";
-function we(){console.log('ss')}
-function wew(){console.log('ss')}
 const MyWebSocket:any = {
     msgCallBacks:[],
     addMsgCallBack(a: ()=> void){
@@ -24,9 +22,7 @@ const MyWebSocket:any = {
 
         MyWebSocket.inst.onopen = () => {
             MyWebSocket.connected = true ;
-<<<<<<< HEAD
 
-=======
             if(MyWebSocket.queue.length>0)
             {
                 MyWebSocket.queue.forEach((element:any) => {
@@ -34,7 +30,6 @@ const MyWebSocket:any = {
                 });
                 MyWebSocket.queue=[];                               
             }
->>>>>>> a7cb922245d4d66879de040fd2947977b4faab09
         }
 
         MyWebSocket.inst.onclose = () =>{
