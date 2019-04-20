@@ -1,7 +1,14 @@
 const CACHE = 'serverWorker';
 const timeout = 400;
 var urlsToCache = [
-  '/'
+  '/',
+  '/dist/index.css',
+  '/dist/index.css.map',
+  '/dist/index.js',
+  '/dist/index.js.map',
+  '/index.html',
+  '/sw.js',
+  '/manifest.json'
 ];
 self.addEventListener('install', (event) => {
     event.waitUntil(
