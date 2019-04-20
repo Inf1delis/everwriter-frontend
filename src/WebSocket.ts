@@ -16,9 +16,9 @@ const MyWebSocket:any = {
     queue:[],
 
     connect: () => {
-        //connect to serve
+
+        //connect to server
         MyWebSocket.inst = new WebSocket(location.origin.replace(/^http/, 'ws'));
-        
         //@ts-ignore
         window.mySocket =  MyWebSocket ;
 
@@ -30,7 +30,7 @@ const MyWebSocket:any = {
                 MyWebSocket.queue.forEach((element:any) => {
                     MyWebSocket.send(element);
                 });
-                MyWebSocket.queue=[];                               
+                MyWebSocket.queue=[];
             }
 
         }
@@ -46,7 +46,7 @@ const MyWebSocket:any = {
         MyWebSocket.inst.onmessage = (event:any)=> {
 
         }
-        
+
     },
     send: (data:any) => {
         if(MyWebSocket.connected==true)
@@ -54,9 +54,9 @@ const MyWebSocket:any = {
         else
             MyWebSocket.queue.push(data)
     }
-    
-    
-    
+
+
+
 }
 
 export {MyWebSocket};
