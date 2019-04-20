@@ -1,10 +1,9 @@
 import * as React from "react";
-import * as ReactDOM from 'react-dom';
-import * as Modal from 'react-modal';
-import {Record} from '../../../types'
+import {Record} from '../../types'
 // import "./PopUp.less"
-import * as App from '../../App'
-import {PopUpState, IEmpty} from "../../../types";
+import {PopUpState, IEmpty} from "../../types";
+import store from "../../ReduxStore";
+import Card from "./Card";
 
 interface IProps {
     record?: Record;
@@ -24,8 +23,9 @@ class PopUp extends React.Component<IProps, IEmpty> {
     render() {
         return (
             <div className='popup'>
-                <button name="PoP Up, Bitch" onClick={this.handleClick}/>
-                sadasdasdasdadasa
+                <Card
+                    record={this.props.record}
+                    handleClick={this.handleClick}/>
             </div>);
     }
 }

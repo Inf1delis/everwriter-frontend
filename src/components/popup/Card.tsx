@@ -2,12 +2,14 @@ import * as React from "react";
 import {Record } from './../../types';
 import store from "../../ReduxStore";
 import {addRecord, updateRecord} from "../../actions";
+import {any, string} from "prop-types";
 
 
-class Card extends React.Component<{record:Record}, {currentRecord:Record, isNew:string}>{
+class Card extends React.Component<{record:Record, handleClick:(event: any)=>void}, {currentRecord:Record, isNew:string}> {
 
     constructor(props:{
-        record:Record
+        record:Record,
+        handleClick:(event: any)=>void
     }) {
         super(props);
         this.handleSaveOrUpdate = this.handleSaveOrUpdate.bind(this);
@@ -24,8 +26,8 @@ class Card extends React.Component<{record:Record}, {currentRecord:Record, isNew
     }
 
     handleSaveOrUpdate(event:any){
-        console.log(this.state.currentRecord);
         store.dispatch(updateRecord(this.state.currentRecord));
+        this.props.handleClick(event);
     }
 
     render() {

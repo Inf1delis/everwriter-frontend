@@ -3,7 +3,7 @@ import Header from "./header/Header";
 import './App.less';
 import RecordsList from "./content/RecordsList";
 import {Record, IEmpty, PopUpState} from '../types'
-import PopUp from "./content/pop_up/PopUp";
+import PopUp from "./popup/PopUp";
 import Card from "./popup/Card";
 import store from "../ReduxStore";
 
@@ -28,6 +28,7 @@ class App extends React.Component<IEmpty, PopUpState> {
                         stateStatus: true
                     })
                 }}/>
+
                 {this.state.stateStatus ? <PopUp
                     record={this.state.pulledRecord}
                     closeHdl={()=>this.setState({
@@ -35,9 +36,6 @@ class App extends React.Component<IEmpty, PopUpState> {
                         stateStatus: false
                     })}/> : <div/>}
 
-
-                <RecordsList/>
-                <Card record={store.getState().records[0]}/>
 
             </div>);
     }
