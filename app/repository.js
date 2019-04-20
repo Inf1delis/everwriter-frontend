@@ -18,6 +18,11 @@ exports.getDocs = () => Docs.find({deleted: false}).sort('+timestamp');
 
 exports.getDocsAfterDate = (date) => Docs.find({timestamp: {$gt: date}}).sort('+timestamp');
 
+exports.changeLike = (id, count) => {
+    if(count === 1) { return Docs.findOneAndUpdate(id, { $inc: { likes: 1 } }, {new: true}); }
+    else if(count === -1) { return Docs.findOneAndUpdate(id, { $dec: { likes: 1 } }, {new: true}); }
+};
+
 exports.updateDoc = (id, title, text, likes, style) => Docs.findOneAndUpdate({_id: id},
     {
         $set: {

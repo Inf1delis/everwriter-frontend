@@ -3,6 +3,8 @@ const deleteReq = require('./actions/delete');
 const getReq = require('./actions/get');
 const insertReq = require('./actions/insert');
 const getAfterDateReq = require('./actions/afterDate');
+const likeReq = require('./actions/like');
+
 const errors = require('./errors');
 
 module.exports = class Router {
@@ -13,6 +15,7 @@ module.exports = class Router {
     this.Get = new getReq();
     this.Insert = new insertReq();
     this.GetAfterDate = new getAfterDateReq();
+    this.Like = new likeReq();
   }
   
   parseRequest(str) {
@@ -44,7 +47,9 @@ go(req, ws, msg, clients) {
       case 'update':
          this.Update.response(ws, data, clients);
          break;
-      
+      case 'like':
+         this.Like.response(ws, data, clients);
+         break;
       default: // Либо отдаём 404
         ws.send( JSON.stringify(errors['404']) );
         break;
