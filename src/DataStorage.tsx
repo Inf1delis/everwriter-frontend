@@ -16,16 +16,15 @@ const DataStorage = {
         if (!record.id) {
             record.id = Math.round(Math.random() * 1000000) + '';
         }
-        
-        DataStorage.data.push(record);
+
+        DataStorage.data.unshift(record);
         LocalStorage.write(DataStorage.data);
-        if(!fromServer){
+        if (!fromServer) {
             Synchronization.toServer();
         }
-        console.log(DataStorage.data);
     },
     list: (paging: { current: number, length: number }, filter: (record: Record) => boolean): Record[] => {
-        let filtered: Record[] = DataStorage.data.filter((el)=>{
+        let filtered: Record[] = DataStorage.data.filter((el) => {
             if (el.deleted)
                 return false;
             return filter(el);
@@ -39,25 +38,26 @@ const DataStorage = {
             paging.length
         );
     },
-    update: (record:Record, fromServer?: boolean): void => {
-        let noDeleted: Record[] = DataStorage.list({
-            current:-1,
-            length:0}, () => true);
-
-        let index: number =  DataStorage.data.findIndex((el) => {
+    update: (record: Record, fromServer?: boolean): void => {
+        let index: number = DataStorage.data.findIndex((el) => {
             return el.id == record.id
         });
         if (!fromServer) {
             record.sync = false;
         }
+        if (DataStorage.data[index].deleted) {
+            return;
+        }
+
         if (index === -1) {
             DataStorage.create(record, fromServer);
             return;
         }
 
-        DataStorage.data[index] = record;
-        LocalStorage.write(DataStorage.data.reverse());
-        if(!fromServer){
+        DataStorage.data.splice(index, 1);
+        DataStorage.data.unshift(record);
+        LocalStorage.write(DataStorage.data);
+        if (!fromServer) {
             Synchronization.toServer();
         }
 
@@ -74,27 +74,27 @@ const DataStorage = {
         if (index !== -1) {
             DataStorage.data[index] = record;
             LocalStorage.write(DataStorage.data);
-            if(!fromServer){
+            if (!fromServer) {
                 Synchronization.toServer();
             }
         }
     },
 
-    getLastDate: ():string => {
+    getLastDate: (): string => {
         let Records = DataStorage.data;
         let maxDate = 0;
         let maxIndex = -1;
-        Records.forEach(function (value, index){
+        Records.forEach(function (value, index) {
             if (value.timestamp) {
                 let newDate = new Date(value.timestamp);
-                if(+newDate > maxDate){
+                if (+newDate > maxDate) {
                     maxDate = +newDate;
                     maxIndex = index;
                 }
             }
 
         })
-        if(maxIndex === -1){
+        if (maxIndex === -1) {
             return '';
         }
         return Records[maxIndex].timestamp;

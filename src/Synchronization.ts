@@ -19,7 +19,7 @@ const Synchronization:any = {
     fromServer(rs: Record[]) {
         rs.forEach((el) => {
             if(el.deleted){
-                DataStorage.delete(el, true)
+                DataStorage.delete(el, true);
                 return;
             }
             let List = DataStorage.list({current:-1, length:0}, (item) => {return item.id===el.id})

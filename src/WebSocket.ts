@@ -80,7 +80,12 @@ const MyWebSocket:any = {
         MyWebSocket.inst.onmessage = (event:any)=> {
 
             let msgData = JSON.parse(event.data);
-            if(msgData.response == 'get' || msgData.response == 'getAfterDate'){
+            if(msgData.response == 'get'){
+                Synchronization.fromServer(msgData.data);
+                store.dispatch(reloadAction());
+            }
+
+            if(msgData.response == 'getAfterDate'){
                 Synchronization.fromServer(msgData.data);
                 store.dispatch(reloadAction());
             }
