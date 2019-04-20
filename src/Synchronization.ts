@@ -6,8 +6,13 @@ import store from "./ReduxStore";
 
 const Synchronization:any = {
     messageCallback(msgData:any) {
-        if (msgData.response === 'post' || msgData.response === 'update' || msgData.response === 'like') {
+        if (msgData.response === 'post' || msgData.response === 'update') {
             DataStorage.update(msgData.data, true);
+            store.dispatch(reloadAction());
+        }
+
+        if (msgData.response === 'like') {
+            DataStorage.update2(msgData.data, true);
             store.dispatch(reloadAction());
         }
 

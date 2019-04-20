@@ -1,9 +1,10 @@
 import {Record} from "./types";
 import LocalStorage from './LocalStorage'
-import {updateRecord} from "./actions";
+import {reloadAction, updateRecord} from "./actions";
 import {Synchronization} from "./Synchronization";
 import RecordView from "./components/content/RecordView";
 import {MyWebSocket} from "./WebSocket";
+import store from "./ReduxStore";
 
 
 const DataStorage = {
@@ -78,8 +79,32 @@ const DataStorage = {
             return;
         }
         DataStorage.data[index].likes += 1;
+        store.dispatch(reloadAction());
 
+    },
 
+    update2: (record: Record, fromServer?: boolean): void => {
+        let index: number = DataStorage.data.findIndex((el) => {
+            return el.id == record.id
+        });
+        if (!fromServer) {
+            record.sync = false;
+        }
+
+        if (index === -1) {
+            DataStorage.create(record, fromServer);
+            return;
+        }
+
+        if (DataStorage.data[index].deleted) {
+            return;
+        }
+
+        DataStorage.data[index].likes = record.likes;
+        LocalStorage.write(DataStorage.data);
+        if (!fromServer) {
+            Synchronization.toServer();
+        }
     },
 
     delete: (record: Record, fromServer?: boolean): void => {
