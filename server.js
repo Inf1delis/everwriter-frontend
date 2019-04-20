@@ -9,7 +9,7 @@ const root = process.cwd(),
 const Router = require('./app/router');
 let router = new Router();
 
-const mongoURI = process.env.MONGO_URI;
+const mongoURI = 'mongodb://root:toor1234@ds143666.mlab.com:43666/everwriter';
 
 mongoose.connect(mongoURI, {useNewUrlParser: true}, function(err) {
     if(err != null) console.log('MongoDB Error:\n' + err);

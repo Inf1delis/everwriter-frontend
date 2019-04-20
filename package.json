@@ -20,6 +20,7 @@
     "express": "^4.16.4",
     "immutable": "^4.0.0-rc.12",
     "mdbreact": "^4.12.0",
+    "mongoose": "^5.5.2",
     "react": "16.8.4",
     "react-dom": "^16.8.4",
     "react-modal": "^3.8.1",
