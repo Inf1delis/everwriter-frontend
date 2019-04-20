@@ -7,6 +7,7 @@ import EditPopUp from "./popup/PopUp";
 import EditCard from "./popup/EditCard";
 import store from "../ReduxStore";
 import {MyWebSocket} from "../WebSocket";
+import Paging from "./paging/Paging";
 
 
 class App extends React.Component<IEmpty, PopUpState> {
@@ -43,7 +44,7 @@ class App extends React.Component<IEmpty, PopUpState> {
                         })}
                     currentNameAction='EDIT'/> : <div/>}
 
-
+                <Paging/>
             </div>);
     }
 }

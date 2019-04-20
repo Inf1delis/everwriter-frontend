@@ -2,7 +2,7 @@ import {
     Record,
     ADD_RECORD,
     EditorActionTypes,
-    UPDATE_RECORD, DELETE_RECORD, RELOAD
+    UPDATE_RECORD, DELETE_RECORD, RELOAD, NEXT_PAGE, FIRST_PAGE, LAST_PAGE, PREV_PAGE
 } from "../types";
 
 export function addRecord(newRecord: Record): EditorActionTypes {
@@ -29,5 +29,30 @@ export function deleteRecord(deletedRecord: Record): EditorActionTypes {
     return {
         type: DELETE_RECORD,
         payload: {record: deletedRecord}
+    }
+}
+
+export function nextPage(): EditorActionTypes {
+    return {
+        type: NEXT_PAGE
+    }
+}
+
+
+export function prevPage(): EditorActionTypes {
+    return {
+        type: PREV_PAGE
+    }
+}
+
+export function firstPage(): EditorActionTypes {
+    return {
+        type: FIRST_PAGE
+    }
+}
+
+export function lastPage(): EditorActionTypes {
+    return {
+        type: LAST_PAGE
     }
 }

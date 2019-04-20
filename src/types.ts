@@ -21,12 +21,20 @@ export interface Record {
 
 
 export interface EditorState {
-    records: Record[]
+    records: Record[],
+    currentPage: number,
+    length: number,
+    lastPage: number,
+    inDataStore: number,
 }
 export const RELOAD = 'RELOAD';
 export const ADD_RECORD = 'ADD_RECORD';
 export const UPDATE_RECORD = 'UPDATE_RECORD';
 export const DELETE_RECORD = 'DELETE_RECORD';
+export const FIRST_PAGE = 'FIRST_PAGE';
+export const LAST_PAGE = 'LAST_PAGE';
+export const NEXT_PAGE = 'NEXT_PAGE';
+export const PREV_PAGE = 'PREV_PAGE';
 
 interface ReloadAction {
     type: typeof RELOAD
@@ -53,6 +61,22 @@ interface DeleteRecordAction {
     }
 }
 
+interface FirstPageAction {
+    type: typeof FIRST_PAGE
+}
+
+interface LastPageRecordAction {
+    type: typeof LAST_PAGE
+}
+
+interface NextPageAction {
+    type: typeof NEXT_PAGE
+}
+
+interface PrevPageAction {
+    type: typeof PREV_PAGE
+}
+
 export interface PopUpState {
     pulledRecord: Record;
     stateStatus: boolean;
@@ -61,4 +85,4 @@ export interface PopUpState {
 
 export interface IEmpty {}
 
-export type EditorActionTypes = AddRecordAction | UpdateRecordAction | DeleteRecordAction | ReloadAction
+export type EditorActionTypes = AddRecordAction | UpdateRecordAction | DeleteRecordAction | ReloadAction | FirstPageAction | LastPageRecordAction | NextPageAction | PrevPageAction
