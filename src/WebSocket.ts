@@ -6,7 +6,7 @@ const MyWebSocket:any = {
 
     connect: () => {
         //connect to server
-        MyWebSocket.inst = new WebSocket("ws://localhost:8080");
+        MyWebSocket.inst = new WebSocket(location.origin.replace(/^http/, 'ws'));
         //@ts-ignore
         window.mySocket =  MyWebSocket ;
 
