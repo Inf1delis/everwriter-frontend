@@ -12,6 +12,13 @@ const MyWebSocket:any = {
 
         MyWebSocket.inst.onopen = () => {
             MyWebSocket.connected = true ;
+            if(MyWebSocket.queue.length>0)
+            {
+                MyWebSocket.queue.forEach((element:any) => {
+                    MyWebSocket.send(element);
+                });
+                MyWebSocket.queue=[];                               
+            }
         }
 
         MyWebSocket.inst.onclose = () =>{
@@ -21,13 +28,6 @@ const MyWebSocket:any = {
                 MyWebSocket.connect();
             },1000)
         }
-       /* MyWebSocket.inst.onerror = () =>{
-            MyWebSocket.connected = false ;
-            MyWebSocket.inst = undefined;
-            setTimeout(()=>{
-                MyWebSocket.connect();
-            },1000)
-        }*/
 
         MyWebSocket.inst.onmessage = (event:any)=> {
             console.log(event.data)
@@ -35,7 +35,10 @@ const MyWebSocket:any = {
         
     },
     send: (data:any) => {
-        MyWebSocket.inst.send(JSON.stringify(data));
+        if(MyWebSocket.connected==true)
+            MyWebSocket.inst.send(JSON.stringify(data));
+        else
+            MyWebSocket.queue.push(data)
     }
     
     
