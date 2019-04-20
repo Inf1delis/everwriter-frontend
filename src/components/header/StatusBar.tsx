@@ -1,8 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-
-const styles = require("./Header.less");
-
+import "./Header.less"
 interface IState {
     text?: string,
     online?: Boolean
@@ -22,7 +20,7 @@ class StatusBar extends React.Component<IProps, IState> {
 
     render() {
         return (
-            <div className={styles.status} >
+            <div className={this.props.online ? "online_status": "offline_status"} >
                 {this.props.online ? "Online": "Offline"}
             </div>);
     }
