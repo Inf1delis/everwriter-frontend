@@ -1,4 +1,6 @@
 import { any } from "prop-types";
+import DataStorage from "./DataStorage";
+
 const MyWebSocket:any = {
     msgCallBacks:[],
     addMsgCallBack(a: ()=> void){
@@ -29,6 +31,20 @@ const MyWebSocket:any = {
                     MyWebSocket.send(element);
                 });
                 MyWebSocket.queue=[];                               
+            }
+
+            let str = DataStorage.getLastDate();
+            if(str){
+                MyWebSocket.send({
+                    action: "getAfterDate",
+                    data: {
+                        timestamp: str
+                    }
+                })
+            } else {
+                MyWebSocket.send({
+                    action: "get"
+                })
             }
         }
 

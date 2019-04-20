@@ -5,8 +5,9 @@ export enum Status {
 }
 
 export interface Record {
+    _id?: string, 
     id: string,
-    timestamp: number,
+    timestamp: string,
     ordinal: number,
     title: string,
     text: string,
@@ -48,5 +49,12 @@ interface DeleteRecordAction {
         record: Record
     }
 }
+
+export interface PopUpState {
+    pulledRecord: Record;
+    stateStatus: boolean;
+}
+
+export interface IEmpty {}
 
 export type EditorActionTypes = AddRecordAction | UpdateRecordAction | DeleteRecordAction
