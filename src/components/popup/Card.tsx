@@ -13,16 +13,20 @@ class Card extends React.Component<{ record: Record, handleClick: (event: any) =
     }) {
         super(props);
         this.handleSaveOrUpdate = this.handleSaveOrUpdate.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChangeTitle = this.handleChangeTitle.bind(this);
+        this.handleChangeText = this.handleChangeText.bind(this);
         this.state = {
             currentRecord: Object.assign({}, props.record),
             isNew: props.record.id ? "NO" : "YES"
         }
     }
 
-    handleChange(event: any) {
+    handleChangeTitle(event: any) {
         this.state.currentRecord.title = event.target.value;
-        console.log(this.state.currentRecord);
+    }
+
+    handleChangeText(event: any) {
+        this.state.currentRecord.text = event.target.value;
     }
 
     handleSaveOrUpdate(event: any) {
@@ -38,8 +42,13 @@ class Card extends React.Component<{ record: Record, handleClick: (event: any) =
                 </button>
 
                 <input
-                    onChange={this.handleChange}
+                    onChange={this.handleChangeTitle}
                     defaultValue={this.state.currentRecord.title}
+                />
+
+                <input
+                    onChange={this.handleChangeText}
+                    defaultValue={this.state.currentRecord.text}
                 />
 
                 <button onClick={this.handleSaveOrUpdate}>
