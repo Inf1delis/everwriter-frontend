@@ -56,6 +56,7 @@ interface DeleteRecordAction {
 export interface PopUpState {
     pulledRecord: Record;
     stateStatus: boolean;
+    connectionStatus: boolean;
 }
 
 export interface IEmpty {}

@@ -4,30 +4,26 @@ import * as ReactDOM from "react-dom";
 const styles = require("./Header.less");
 
 interface IState {
-    text?: string;
+    text?: string,
     online?: Boolean
 }
 
-interface IProps {}
+interface IProps {
+    online: boolean
+}
+
 class StatusBar extends React.Component<IProps, IState> {
     constructor(props:any) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
         this.state = {
-            online: true
+            online: props.status
         }
-    }
-
-    handleClick (event:any) {
-        this.setState({
-            online: !this.state.online
-        } as IState)
     }
 
     render() {
         return (
-            <div className={styles.status} onClick={this.handleClick}>
-                Online: {this.state.online ? "y": "n"}
+            <div className={styles.status} >
+                {this.props.online ? "Online": "Offline"}
             </div>);
     }
 
