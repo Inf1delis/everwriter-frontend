@@ -1,2 +1,9 @@
+<<<<<<< HEAD
 /dist
 /node_modules
+=======
+/node_modules
+/.idea
+/dist
+
+>>>>>>> 5d18e8ca5454489f0476e53cd7da0bdccc893112
