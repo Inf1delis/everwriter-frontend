@@ -32,8 +32,8 @@ function editorReducer(
             allRecords = DataStorage.list({current: -1, length: 0}, ()=> true);
             newLastPage = ((allRecords.length-1)/6)>>0
             return {
-                records: DataStorage.list({current: state.currentPage, length: 6}, ()=> true),
-                currentPage: state.currentPage,
+                records: DataStorage.list({current: state.currentPage > newLastPage ? state.currentPage-1: state.currentPage, length: 6}, ()=> true),
+                currentPage: state.currentPage > newLastPage ? state.currentPage-1: state.currentPage,
                 lastPage: newLastPage,
                 length: 6,
                 inDataStore: allRecords.length
