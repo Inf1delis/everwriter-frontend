@@ -8,7 +8,7 @@ module.exports = class Delete {
             console.log(doc);
             ws.send(JSON.stringify({
                 code: 200,
-                message: 'OK',
+                response: 'delete',
                 data: doc
             }));
         } else ws.send(JSON.stringify(errors['400']));
