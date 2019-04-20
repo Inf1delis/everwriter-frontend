@@ -20,7 +20,7 @@ const global = (function() {
 })();
 
 app.use(express.static(resourcesPath));
-const port = process.env.PORT || 177;
+const port = process.env.PORT || 777;
 let expressServer = app.listen(port);
 
 const WebSocket = require('ws');
