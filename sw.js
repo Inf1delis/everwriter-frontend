@@ -1,18 +1,10 @@
 const CACHE = 'serverWorker';
 const timeout = 400;
 let urlsToCache = [
-  '/',
-  '/dist/index.css',
-  '/dist/index.css.map',
   '/dist/index.js',
-  '/dist/index.js.map',
-  '/index.html',
-  'sw.js',
-  '/node_modules/react/umd/react.development.js',
-  '/node_modules/react-dom/umd/react-dom.development.js',
-  'manifest.json',
-  'bootstrap.css',
   '/dist/index.css',
+  '/bootstrap.css',
+  'manifest.json'
 
 ];
 self.addEventListener('install', (event) => {
