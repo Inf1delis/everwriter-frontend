@@ -78,7 +78,8 @@ const DataStorage = {
         }
 
         DataStorage.data[index].likes += 1;
-        LocalStorage.write(DataStorage.data);
+        // LocalStorage.write(DataStorage.data);
+        
 
     },
 

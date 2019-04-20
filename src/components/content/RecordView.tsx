@@ -9,21 +9,19 @@ import {MyWebSocket} from "../../WebSocket";
 import {Synchronization} from "../../Synchronization";
 import DataStorage from "../../DataStorage";
 
-const RecordView = (props: { key: any, text: any, title: any, record: any, itemClk: (rec: Record) => void }) => {
+const RecordView = (props: { key: any, text: any, title: any, record: Record, itemClk: (rec: Record) => void }) => {
         const rateButton = (value: number, text:string) => {
             return (
                 <button
                     className="btn-floating btn-sm btn-primary"
                     onClick={(event: any) => {
                         event.stopPropagation();
-                        const liked = Object.assign({}, props.record);
-                        liked.likes += value;
 
                         DataStorage.updateLikes(props.record);
                         MyWebSocket.send({
                                 "action": "like",
                                 "data": {
-                                    "_id": liked.id,
+                                    "_id": props.record._id,
                                     "like":  value
                                 }
                             }
