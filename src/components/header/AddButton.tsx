@@ -45,7 +45,9 @@ class AddButton extends React.Component<IProps, IState> {
                     className="btn-floating btn-lg blue-gradient header__button-add"
                     onClick={this.handleClick}
                 >
+                    <div className="add-button-text">
                     +
+                    </div>
                 </button>
 
                 {this.state.show && <AddPopUp

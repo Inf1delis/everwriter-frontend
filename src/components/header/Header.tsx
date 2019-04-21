@@ -10,9 +10,6 @@ const Header = (props: { status: boolean }) => {
         <div className='header'>
             <div className='header_buttons'>
                 <AddButton/>
-                <div>
-                    <ButtonGroup />
-                </div>
                 <StatusBar online={props.status}/>
             </div>
         </div>

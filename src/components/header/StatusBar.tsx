@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./Header.less"
+import ButtonGroup from "./ButtonGroup";
 
 interface IState {
     text?: string,
@@ -11,7 +12,7 @@ interface IProps {
 }
 
 class StatusBar extends React.Component<IProps, IState> {
-    constructor(props:any) {
+    constructor(props: any) {
         super(props);
         this.state = {
             online: props.status
@@ -20,8 +21,11 @@ class StatusBar extends React.Component<IProps, IState> {
 
     render() {
         return (
-            <div className={this.props.online ? "online_status": "offline_status"} >
-                {this.props.online ? "Online": "Offline"}
+            <div className={this.props.online ? "online_status" : "offline_status"}>
+                {this.props.online ? "Online" : "Offline"}
+                <div>
+                    <ButtonGroup/>
+                </div>
             </div>);
     }
 

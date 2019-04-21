@@ -70,7 +70,7 @@ class EditCard extends React.Component<IProps, IState> {
                             onChange={this.handleTextChange}
                             defaultValue={this.state.currentRecord.text}
                             placeholder='Text'
-                            rows={10}
+                            rows={15}
                         >
                         </TextareaAutosize>
                         {
